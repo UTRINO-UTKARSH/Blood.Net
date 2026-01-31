@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Caveat+Brush&family=Caveat:wght@400..700&family=Comfortaa:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
+
+/* try to add animations like your portfolio */
+
+html {
+    scroll-behavior: smooth;
+    cursor: default;
+}
+
+body {
+    opacity: 0;
+    animation: show 1s ease-out forwards 0.5s;
+    background-color: rgb(240, 234, 225);
+}
+
+.head1,
+.head2 {
+    opacity: 0;
+    /* transform: translateY(2rem); */
+    /* animation: item-appear 1s ease-in forwards 0.5s; */
+    animation: show 1s ease-in forwards;
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+
+.semi1 {
+    opacity: 0;
+    animation: item-appear 1s ease-in forwards 1s;
+    
+    /* animation: show 1.3s ease-in forwards 1s; */
+    font-family: "Caveat", cursive;
+    font-weight: 400;
+}
+
+.title {
+    font-family: "Montserrat";
+    font-weight: 600;
+}
+
+.img {
+    margin-top: 40%;
+    animation: item-appear 1s ease-in forwards 1.5s;
+}
+
+.vanishing-image {
+    animation: fade-out linear both;
+    animation-timeline: scroll();
+    animation-range: exit 0% exit 100%;
+}
+.showup{
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: showup 1s ease-in forwards 0.5s;
+}
+
+/* KEYFRAMES */
+
+@keyframes showup {
+    form{
+        visibility: hidden;
+        opacity: 1;
+        transform: translateY(10px);
+    }
+    to{
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes show {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes item-appear {
+    from {
+        visibility: hidden;
+        opacity: 0;
+        /* transform: translateX(10em); */
+    }
+
+    to {
+        visibility: visible;
+        opacity: 1;
+        /* transform: translateX(0); */
+    }
+
+}

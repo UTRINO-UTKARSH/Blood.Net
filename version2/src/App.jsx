@@ -5,7 +5,7 @@ import Image from './components/Image'
 const App = () => {
   return (
     <div>
-      <div className='Nav my-3'>
+      <div className=' my-3'>
          <Navbar />
       </div>
       <div className='flex items-center justify-center'>
