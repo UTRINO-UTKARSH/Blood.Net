@@ -2,13 +2,13 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <nav className='flex blood rounded-full mx-10 items-center justify-between py-3 px-8 Nav shadow-xl'>
+    <nav className='flex bg-white/30 blood rounded-full mx-90 items-center justify-between py-3 px-8 Nav shadow-xl'>
     {/* 1. Logo Section */}
-      <div className='text-2xl cursor-pointer font-bold text-red-600 flex items-center gap-2'>
-        <span className='bg-red-600 text-white p-1 rounded-full'>🩸</span>
+      <div className='text-2xl cursor-pointer font-bold text-white flex items-center gap-2'>
+        <span className='bg-white text-white p-1 rounded-full'>🩸</span>
         BLOOD.NET
       </div>
-      <ul className='flex items-center gap-10 font-medium text-black'>
+      <ul className='flex items-center gap-10 font-medium text-white'>
         <li className='hover:text-red-600 cursor-pointer transition-colors'>Home</li>
         <li className='hover:text-red-600 cursor-pointer transition-colors'>Donate</li>
         <li className='hover:text-red-600 cursor-pointer transition-colors'>About Us</li>

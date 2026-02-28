@@ -11,7 +11,7 @@ html {
 body {
     opacity: 0;
     animation: show 1s ease-out forwards 0.5s;
-    background-color: rgb(240, 234, 225);
+
 }
 
 .head1,
@@ -58,7 +58,7 @@ body {
 /* KEYFRAMES */
 
 @keyframes showup {
-    form{
+    from{
         visibility: hidden;
         opacity: 1;
         transform: translateY(10px);

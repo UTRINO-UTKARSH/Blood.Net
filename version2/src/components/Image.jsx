@@ -2,8 +2,8 @@ import React from 'react'
 
 const Image = () => {
   return (
-    <div className='-z-1 vanishing-image  absolute img'>
-        <img className='' src="/src/assets/hand6.png" alt="" />
+    <div className='-z-1 vanishing-image animate-spin absolute img'>
+        <img className='invert' src="/src/assets/hand6.png" alt="" />
     </div>
   )
 }
