@@ -3,15 +3,15 @@ import Navbar from './components/Navbar'
 import Center from './components/Center'
 import Image from './components/Image'
 import LightRays from './components/LightRays'
+import OurFeatures from './components/OurFeatures'
 
 const App = () => {
   return (
-    <div className="bg-[#121212] min-h-screen overflow-hidden">
+    <div className="bg-[#121212] min-h-screen">
 
-      {/* HERO SECTION */}
-      <div className="relative h-screen overflow-hidden">
+     
+      <div className="relative h-screen">
 
-        {/* Light Rays Background */}
         <LightRays
           raysOrigin="top-center"
           raysColor="#ffffff"
@@ -25,20 +25,23 @@ const App = () => {
           pulsating={false}
           fadeDistance={1}
           saturation={1}
-          className="absolute inset-0 z-0"
+          className=" fixed z-0 inset-0 pointer-events-none"
         />
 
         {/* Content Layer */}
         <div className="relative z-10 h-full flex flex-col pt-10">
           <Navbar />
 
-          <div className="flex-1 flex items-center justify-center">
+          <div className="flex relative items-center justify-center">
             <Center />
             <Image />
           </div>
         </div>
+        {/* FEATURES SECTION */}
+        <div className=" bg-[#121212] z-10  min-h-screen">
+          <OurFeatures />
+        </div>
       </div>
-
     </div>
   );
 };

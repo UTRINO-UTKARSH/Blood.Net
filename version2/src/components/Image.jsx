@@ -1,9 +1,10 @@
 import React from 'react'
+import handImage from '../assets/hand6.png'
 
 const Image = () => {
   return (
-    <div className='-z-1 vanishing-image animate-spin absolute img'>
-        <img className='invert' src="/src/assets/hand6.png" alt="" />
+    <div className='absolute fade-out img'>
+        <img className='invert' src={handImage} alt="Donor hand" />
     </div>
   )
 }
