@@ -67,8 +67,15 @@ body {
     animation-timeline: --revealing-image;
     animation-range: entry 0% entry 100%;
 }
+.cursor{
+    animation: blink 0.7s infinite;
+}
 /* KEYFRAMES */
-
+@keyframes blink {
+    50%{
+        opacity: 0;
+    }
+}
 @keyframes intro {
     from {
         opacity: 0;
