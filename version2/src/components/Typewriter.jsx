@@ -41,7 +41,7 @@ const useTypewriter = (words, speed = 100, pause = 2000) => {
 
 // Usage Component
 const Typewriter = () => {
-  const sentences = ["How Do we work. ", "What we offer", "React is awesome"];
+  const sentences = ["How Do we work. ", "What we offer", "Our Features"];
   const displayText = useTypewriter(sentences);
 
   return (
