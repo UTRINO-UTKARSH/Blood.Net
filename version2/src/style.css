@@ -38,6 +38,10 @@ body {
     font-weight: 600;
 }
 
+.stats{
+    font-family: 'Montserrat';
+}
+
 .img {
     margin-top: 40%;
     animation: item-appear 1s ease-in forwards, fade-out linear; 
