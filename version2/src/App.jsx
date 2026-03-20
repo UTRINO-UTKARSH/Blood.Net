@@ -5,6 +5,7 @@ import Image from './components/Image'
 import LightRays from './components/LightRays'
 import OurFeatures from './components/OurFeatures'
 import Stats from './components/Stats'
+import Cta from './components/Cta'
 const App = () => {
   return (
     <div className="bg-[#121212] min-h-screen">
@@ -41,8 +42,11 @@ const App = () => {
         <div className=" bg-[#121212] z-10  min-h-screen">
           <OurFeatures />
         </div>
-        <div className=' bg-[#121212] z-10 min-h-screen'>
+        <div className=' bg-[#121212] z-10 min-h-100'>
           <Stats />
+        </div>
+        <div className='bg-[#121212] z-10 min-h-screen '>
+          <Cta />
         </div>
       </div>
     </div>
