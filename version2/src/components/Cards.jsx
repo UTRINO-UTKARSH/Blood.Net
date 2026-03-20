@@ -1,5 +1,4 @@
 import React from 'react'
-// import first from '../assets/connect.png'
 const Cards = ({ title, desc,img,theme,value }) => {
   const shadowClass = theme === "red" 
     ? "hover:shadow-red-600/60 shadow-red-900" 
@@ -21,14 +20,12 @@ const Cards = ({ title, desc,img,theme,value }) => {
         </h3>
       </div>
 
-      {/* Description Area: Use flex-grow to take up remaining space */}
       <div className='flex-grow overflow-hidden'>
         <p className='text-gray-200 text-xl leading-relaxed'>
           {desc}
         </p>
       </div>
 
-      {/* Button Area: Pushed to the bottom by flex-grow above */}
       <div className='mt-6 flex justify-center'>
         <button className='w-full border border-white/50 py-2.5 rounded-xl hover:bg-white hover:text-black transition-all font-medium active:scale-95'>
           {value}

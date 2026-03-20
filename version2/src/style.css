@@ -44,6 +44,7 @@ body {
     /* animation: fade-out linear both; */
     animation-timeline: auto, scroll();
     animation-range: auto, exit 0% exit 100%;
+
 }
 
 .vanishing-image {

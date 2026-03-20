@@ -49,7 +49,6 @@ const OurFeatures = () => {
           <Cards key={index} title = {item.title} desc = {item.desc} value={item.value} img = {item.img} theme = {item.theme} />
        ))}
       </div>
-      {/* Add your features content here */}
     </div>
   )
 }

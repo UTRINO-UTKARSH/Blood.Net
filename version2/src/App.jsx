@@ -4,7 +4,7 @@ import Center from './components/Center'
 import Image from './components/Image'
 import LightRays from './components/LightRays'
 import OurFeatures from './components/OurFeatures'
-
+import Stats from './components/Stats'
 const App = () => {
   return (
     <div className="bg-[#121212] min-h-screen">
@@ -40,6 +40,9 @@ const App = () => {
         {/* FEATURES SECTION */}
         <div className=" bg-[#121212] z-10  min-h-screen">
           <OurFeatures />
+        </div>
+        <div className=' bg-[#121212] z-10 min-h-screen'>
+          <Stats />
         </div>
       </div>
     </div>
