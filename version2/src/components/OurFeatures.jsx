@@ -42,9 +42,9 @@ const features = [
 const OurFeatures = () => {
 
   return (
-    <div className='min-h-screen intro relative py-20 px-10 justify-center  items-center '>
+    <div className='min-h-screen intro relative py-20 px-10 justify-center items-center '>
       <h2 className='text-white title text-7xl font-extrabold text-center mb-10'><Typewriter /></h2>
-      <div className='flex  justify-center flex-wrap gap-6'>
+      <div className='flex justify-center flex-wrap gap-4'>
        {features.map((item,index)=> (
           <Cards key={index} title = {item.title} desc = {item.desc} value={item.value} img = {item.img} theme = {item.theme} />
        ))}

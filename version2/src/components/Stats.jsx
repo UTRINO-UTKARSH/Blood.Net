@@ -2,7 +2,7 @@ import React from 'react'
 
 const Stats = () => {
   return (
-    <div className='stats intro bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-zinc-900 to-black relative flex flex-col text-white z-10'>
+    <div className='stats intro  from-zinc-900 to-black relative flex flex-col text-white z-10'>
       <div className='heading text-white flex flex-col justify-center gap-6 items-center '>
         <span className='text-7xl font-bold tracking-tighter'>Why it matters?</span>
         <span className='text-xl font-semibold'>Because Every second counts</span>
