@@ -4,30 +4,30 @@ const Cards = ({ title, desc, img, theme, value }) => {
     ? "hover:shadow-red-600/60 shadow-red-900"
     : "hover:shadow-blue-600/90 shadow-blue-700";
   return (
-    <div className={`flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl shadow-blue-900 bg-white/10 backdrop-blur-md border border-white/20 p-7 w-90 h-[400px] rounded-3xl text-white ${shadowClass}`}>
+    <div className={`flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl shadow-blue-900 bg-white/10 backdrop-blur-md border border-white/20 p-4 sm:p-6 md:p-7 w-full sm:w-72 md:w-80 h-auto sm:h-96 md:h-[400px] rounded-2xl sm:rounded-3xl text-white ${shadowClass}`}>
 
 
-      <div className='flex items-center gap-4 mb-20'>
-        <div className='shrink-0 border-2 border-emerald-400 w-20 h-20 overflow-hidden rounded-full'>
+      <div className='flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6 md:mb-20'>
+        <div className='shrink-0 border-2 border-emerald-400 w-16 h-16 sm:w-18 md:w-20 md:h-20 overflow-hidden rounded-full'>
           <img
             className='w-full h-full object-cover'
             src={img}
             alt="logo"
           />
         </div>
-        <h3 className='text-2xl font-bold '>
+        <h3 className='text-lg sm:text-xl md:text-2xl font-bold'>
           {title}
         </h3>
       </div>
 
       <div className='flex-grow overflow-hidden'>
-        <p className='text-gray-200 text-xl leading-relaxed'>
+        <p className='text-gray-200 text-sm sm:text-base md:text-lg leading-relaxed'>
           {desc}
         </p>
       </div>
 
-      <div className='mt-6 flex justify-center'>
-        <button className='w-full border border-white/50 py-2.5 rounded-xl hover:bg-white hover:text-black transition-all font-medium active:scale-95'>
+      <div className='mt-4 sm:mt-6 flex justify-center'>
+        <button className='w-full border border-white/50 py-2 sm:py-2.5 rounded-lg sm:rounded-xl text-sm sm:text-base hover:bg-white hover:text-black transition-all font-medium active:scale-95'>
           {value}
         </button>
       </div>

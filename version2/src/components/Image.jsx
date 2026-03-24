@@ -22,7 +22,7 @@ const Image = () => {
 
   return (
     <div 
-      className={`absolute mt-[40%] pointer-events-none img transition-all duration-300 ${
+      className={`absolute mt-[20%] sm:mt-[35%] md:mt-[40%] pointer-events-none img transition-all duration-300 hidden sm:block ${
         isVisible ? 'opacity-100' : 'opacity-0 invisible'
       }`}
       style={{ visibility: isVisible ? 'visible' : 'hidden' }}

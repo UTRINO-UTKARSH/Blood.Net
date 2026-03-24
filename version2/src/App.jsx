@@ -8,10 +8,10 @@ import Stats from './components/Stats'
 import Cta from './components/Cta'
 const App = () => {
   return (
-    <div className="bg-[#121212] min-h-screen">
+    <div className="bg-[#121212] min-h-full">
 
      
-      <div className="relative h-screen">
+      <div className="relative min-h-screen">
 
         <LightRays
           raysOrigin="top-center"
@@ -30,22 +30,22 @@ const App = () => {
         />
 
         {/* Content Layer */}
-        <div className="relative z-10 h-full flex flex-col pt-10">
+        <div className="relative z-10 h-full flex flex-col pt-4 sm:pt-6 md:pt-8 lg:pt-10 px-4 sm:px-0">
           <Navbar />
 
-          <div className="flex relative items-center justify-center">
+          <div className="flex relative items-center justify-center flex-col sm:flex-row">
             <Center />
             <Image />
           </div>
         </div>
         {/* FEATURES SECTION */}
-        <div className=" bg-[#121212] z-10  min-h-screen">
+        <div className="bg-[#121212] z-10 min-h-screen">
           <OurFeatures />
         </div>
-        <div className=' bg-[#121212] z-10 min-h-100'>
+        <div className='bg-[#121212] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
           <Stats />
         </div>
-        <div className='bg-[#121212] z-10 min-h-screen '>
+        <div className='bg-[#121212] z-10 min-h-screen'>
           <Cta />
         </div>
       </div>
