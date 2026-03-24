@@ -43,12 +43,11 @@ body {
 }
 
 .img {
-    margin-top: 40%;
-    animation: item-appear 1s ease-in forwards, fade-out linear; 
-    /* animation: fade-out linear both; */
+    animation: item-appear 1s ease-in forwards,fade-out linear; 
     animation-timeline: auto, scroll();
+    /* animation-timeline: view(); */
     animation-range: auto, exit 0% exit 100%;
-
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
 .vanishing-image {
@@ -95,6 +94,7 @@ body {
         transform: scale(1);
     }
 }
+
 
 @keyframes showup {
     from{
