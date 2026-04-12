@@ -10,7 +10,7 @@ const Center = () => {
                 <span className='text-sm sm:text-2xl md:text-3xl lg:text-4xl semi1 text-white font-extrabold tracking-widest'>. . . . . . . .</span>
             </div>
             <div className='flex flex-col showup semi2 my-8 sm:my-12 md:my-15 items-center px-4'>
-                <span className='text-sm sm:text-lg md:text-xl lg:text-2xl font-bold title bg-pink-200 rounded-full px-4 sm:px-7 py-1'>Together, were Stronger</span>
+                <span className='text-sm sm:text-lg md:text-xl lg:text-2xl font-bold title bg-gray-200 rounded-full px-4 sm:px-7 py-1'>Together, were Stronger</span>
                 <p className='my-2 sm:my-3 text-sm sm:text-lg md:text-xl lg:text-2xl text-white italic font-semibold flex text-center'>Connecting donors and recipients
 when every second matters</p>
             </div>

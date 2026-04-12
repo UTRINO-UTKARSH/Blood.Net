@@ -25,9 +25,8 @@ const Image = () => {
       className={`absolute mt-[20%] sm:mt-[35%] md:mt-[40%] pointer-events-none img transition-all duration-300 hidden sm:block ${
         isVisible ? 'opacity-100' : 'opacity-0 invisible'
       }`}
-      style={{ visibility: isVisible ? 'visible' : 'hidden' }}
     >
-        <img className='invert w-48 sm:visi md:w-64 lg:w-auto' src={handImage} alt="Donor hand" />
+        <img className='invert w-48 sm:w-56  md:w-64 lg:w-auto' src={handImage} alt="Donor hand" />
     </div>
   )
 }
