@@ -27,7 +27,7 @@ const Image = () => {
       }`}
       style={{ visibility: isVisible ? 'visible' : 'hidden' }}
     >
-        <img className='invert' src={handImage} alt="Donor hand" />
+        <img className='invert w-48 sm:visi md:w-64 lg:w-auto' src={handImage} alt="Donor hand" />
     </div>
   )
 }

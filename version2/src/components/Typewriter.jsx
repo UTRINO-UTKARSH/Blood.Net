@@ -45,7 +45,7 @@ const Typewriter = () => {
   const displayText = useTypewriter(sentences);
 
   return (
-    <div className='text-7xl'>
+    <div className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl'>
       {displayText}
       <span className="cursor"> |</span>
     </div>

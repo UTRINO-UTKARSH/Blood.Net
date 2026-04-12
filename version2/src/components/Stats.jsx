@@ -7,7 +7,7 @@ const Stats = () => {
         <span className='text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-center'>Why it matters?</span>
         <span className='text-sm sm:text-lg md:text-xl font-semibold text-center'>Because Every second counts</span>
       </div>
-      <div className='container w-full text-center justify-center items-center my-12 sm:my-20 md:my-24 lg:my-35 mx-auto px-2 sm:px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10'>
+      <div className='container w-full text-center justify-center items-center sm:my-20 md:my-24 lg:my-35 mx-auto px-2 sm:px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10'>
         <div className='flex-col flex gap-2'>
           <span className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold'>3+</span>
           <span className='text-2xl sm:text-3xl md:text-4xl tracking-wide'>Lives Saved</span>

@@ -33,7 +33,7 @@ const App = () => {
         <div className="relative z-10 h-full flex flex-col pt-4 sm:pt-6 md:pt-8 lg:pt-10 px-4 sm:px-0">
           <Navbar />
 
-          <div className="flex relative items-center justify-center flex-col sm:flex-row">
+          <div className="flex relative items-center justify-center flex-col">
             <Center />
             <Image />
           </div>
@@ -42,7 +42,7 @@ const App = () => {
         <div className="bg-[#121212] z-10 min-h-screen">
           <OurFeatures />
         </div>
-        <div className='bg-[#121212] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
+        <div className='bg-[#121212] z-10 min-h-auto sm:min-h-96 md:min-h-[400px]'>
           <Stats />
         </div>
         <div className='bg-[#121212] z-10 min-h-screen'>
