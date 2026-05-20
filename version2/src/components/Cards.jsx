@@ -21,7 +21,7 @@ const Cards = ({ title, desc, img, theme, value }) => {
       </div>
 
       <div className='grow overflow-hidden'>
-        <p className='text-gray-200 text-xl leading-relaxed'>
+        <p className='text-gray-200 text-xl '>
           {desc}
         </p>
       </div>
