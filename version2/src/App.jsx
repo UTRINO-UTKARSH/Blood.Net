@@ -1,55 +1,51 @@
 import React from 'react'
+import { useRef } from 'react';
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar'
-import Center from './components/Center'
-import Image from './components/Image'
-import LightRays from './components/LightRays'
-import OurFeatures from './components/OurFeatures'
-import Stats from './components/Stats'
-import Cta from './components/Cta'
+import Home from './pages/Home'
+import Donate from './pages/Donate'
 const App = () => {
+  const sentinelRef = useRef(null);
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // When sentinel is out of view, add fade class to content
+        document.getElementById('page-content').style.WebkitMaskImage = entry.isIntersecting
+          ? 'none'
+          : 'linear-gradient(to bottom, transparent 0px, black 80px)';
+        document.getElementById('page-content').style.maskImage = entry.isIntersecting
+          ? 'none'
+          : 'linear-gradient(to bottom, transparent 0px, black 80px)';
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, []);
   return (
-    <div className="bg-[#121212] min-h-full">
+    <BrowserRouter>
+      <div className="bg-[#121212] min-h-full">
 
-     
-      <div className="relative min-h-screen">
-
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#ffffff"
-          raysSpeed={1}
-          lightSpread={0.5}
-          rayLength={3}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0}
-          distortion={0}
-          pulsating={false}
-          fadeDistance={1}
-          saturation={1}
-          className=" fixed z-0 inset-0 pointer-events-none"
-        />
-
-        {/* Content Layer */}
-        <div className="relative z-10 h-full flex flex-col pt-4 sm:pt-6 md:pt-8 lg:pt-10 px-4 sm:px-0">
+        {/* Navbar is HERE — outside Routes, so it shows on every page */}
+        <div className="relative z-10 pt-13 px-4 sm:px-0">
           <Navbar />
-
-          <div className="flex relative items-center justify-center flex-col">
-            <Center />
-            <Image />
-          </div>
         </div>
-        {/* FEATURES SECTION */}
-        <div className="bg-[#121212] z-10 min-h-screen">
-          <OurFeatures />
-        </div>
-        <div className='bg-[#121212] z-10 min-h-auto sm:min-h-96 md:min-h-[400px]'>
-          <Stats />
-        </div>
-        <div className='bg-[#121212] z-10 min-h-screen'>
-          <Cta />
+        <div ref={sentinelRef} className="h-px w-full" /> 
+       <div id="page-content" className="transition-all duration-300">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Donate" element={<Donate />} />
+            <Route path="/donate" element={<Donate />} />
+          </Routes>
         </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 };
 
