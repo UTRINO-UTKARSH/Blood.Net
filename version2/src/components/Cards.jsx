@@ -1,5 +1,5 @@
 import React from 'react'
-const Cards = ({ title, desc, img, theme, value }) => {
+const Cards = ({ title, desc, img, theme, value })=>{
   const shadowClass = theme === "red"
     ? "hover:shadow-red-600/60 shadow-red-900"
     : "hover:shadow-blue-600/90 shadow-blue-700";

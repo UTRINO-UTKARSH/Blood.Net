@@ -33,7 +33,7 @@ const App = () => {
       <div className="bg-[#121212] min-h-full">
 
         {/* Navbar is HERE — outside Routes, so it shows on every page */}
-        <div className="relative z-10 pt-13 px-4 sm:px-0">
+        <div className="relative pt-13 px-4 sm:px-0">
           <Navbar />
         </div>
         <div ref={sentinelRef} className="h-px w-full" /> 

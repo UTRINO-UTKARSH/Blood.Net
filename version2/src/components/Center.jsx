@@ -2,18 +2,43 @@ import React from 'react'
 
 const Center = () => {
     return (
-        <div className='vanishing-image'>
-            <div className='flex flex-col my-8 sm:my-12 md:my-15 items-center'>
-                <span className='text-white head1 font-bold text-3xl sm:text-5xl md:text-6xl lg:text-8xl'>BLOOD</span>
-                <span className='text-white head2 font-bold text-3xl sm:text-5xl md:text-6xl lg:text-8xl'>DONATION</span>
-                <span className='my-3 sm:my-4 md:my-6 semi1 text-white text-lg sm:text-2xl md:text-3xl lg:text-6xl'>Saves Lives</span>
-                <span className='text-sm sm:text-2xl md:text-3xl lg:text-4xl semi1 text-white font-extrabold tracking-widest'>. . . . . . . .</span>
+        <div className='vanishing-image flex flex-col  items-center mt-16 md:mt-24'>
+
+            {/* Main Hero */}
+            <div className='flex flex-col items-center text-center'>
+
+                <h1 className='text-white head1 font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight'>
+                    One Network For
+                </h1>
+
+                <h2 className='mt-4 text-white head2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium'>
+                    Blood, Hospitals and
+                </h2>
+
+                <h2 className='mt-2 semi1 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl'>
+                    Emergency Care
+                </h2>
+
+                <div className='mt-4 text-white tracking-[0.5em] text-lg'>
+                    • • • • • • •
+                </div>
+
             </div>
-            <div className='flex flex-col showup semi2 my-8 sm:my-12 md:my-15 items-center px-4'>
-                <span className='text-sm sm:text-lg md:text-xl lg:text-2xl font-bold title bg-gray-200 rounded-full px-4 sm:px-7 py-1'>Together, were Stronger</span>
-                <p className='my-2 sm:my-3 text-sm sm:text-lg md:text-xl lg:text-2xl text-white italic font-semibold flex text-center'>Connecting donors and recipients
-when every second matters</p>
+
+            {/* Subtitle */}
+            <div className='showup semi2 flex flex-col items-center text-center mt-10 px-4'>
+
+                <span className='text-sm sm:text-base md:text-lg lg:text-xl font-bold bg-gray-200 rounded-full px-6 py-2 text-black'>
+                    Connecting Care. Saving Lives.
+                </span>
+
+                <p className='mt-4 text-white text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl italic font-medium'>
+                    Find blood donors, blood banks, hospitals and emergency
+                    services when every second matters.
+                </p>
+
             </div>
+
         </div>
     )
 }
