@@ -1,3 +1,4 @@
+import { HelpCircleIcon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const useTypewriter = (words, speed = 100, pause = 2000) => {
