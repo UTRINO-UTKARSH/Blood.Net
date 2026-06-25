@@ -1,7 +1,6 @@
-import { HelpCircleIcon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-const useTypewriter = (words, speed = 100, pause = 2000) => {
+const useTypewriter = (words, speed = 100, pause = 3000) => {
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopIndex, setLoopIndex] = useState(0);
@@ -25,7 +24,7 @@ const useTypewriter = (words, speed = 100, pause = 2000) => {
       // Logic: Word is fully typed
       if (!isDeleting && displayText === fullWord) {
         setTimeout(() => setIsDeleting(true), pause); // Wait before deleting
-      } 
+      }
       // Logic: Word is fully deleted
       else if (isDeleting && displayText === '') {
         setIsDeleting(false);
@@ -35,14 +34,18 @@ const useTypewriter = (words, speed = 100, pause = 2000) => {
 
     const timer = setTimeout(handleTyping, typingSpeed);
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, loopIndex, words, speed, pause,typingSpeed]);
+  }, [displayText, isDeleting, loopIndex, words, speed, pause, typingSpeed]);
 
   return displayText;
 };
 
 // Usage Component
 const Typewriter = () => {
-  const sentences = ["How Do we work. ", "What we offer", "Our Features"];
+  const sentences = [
+    "Choose Your Service",
+    "Our Services",
+    "One Platform. Many Solutions."
+  ];
   const displayText = useTypewriter(sentences);
 
   return (

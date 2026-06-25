@@ -8,35 +8,35 @@ import fourth from '../assets/ambulance.png'
 import fifth from '../assets/blood_bank.png'
 const features = [
   {
-    title: "Connect",
-    desc: "During the time of need or crisis seamlessly link with healthcare providers and community members in real-time.",
-    img :first,
-    value:"Let's Connect"
+    title: "Need Blood?",
+    desc: "Quickly find nearby blood donors, blood banks and hospitals during medical emergencies.",
+    img: first,
+    value: "Find Help"
   },
   {
-    title: "Doctors/Hospital Registration",
-    desc: "A streamlined portal for medical professionals to join our network and manage their profiles.",
-    img:second,
-    value:"Join the Network"
+    title: "Healthcare Providers",
+    desc: "Hospitals, doctors and clinics can join the network to provide faster emergency assistance.",
+    img: second,
+    value: "Join Network"
   },
   {
-    title: "Donor Registration",
-    desc: "Sign up to save lives by becoming a verified organ or tissue donor in just a few clicks.",
-    img:third,
-    value:"Let's Save Lives"
+    title: "Become a Donor",
+    desc: "Register as a verified blood donor and help save lives whenever an emergency request arises.",
+    img: third,
+    value: "Register Now"
   },
   {
-    title: "Get Ambulance",
-    desc: "Emergency rapid-response booking to get medical help to your location immediately.",
-    img:fourth,
-    theme:"red",
-    value:"Dispatch Now"
+    title: "Emergency Ambulance",
+    desc: "Locate and request nearby ambulance services for rapid emergency transportation.",
+    img: fourth,
+    theme: "red",
+    value: "Request Ambulance"
   },
   {
     title: "Blood Banks",
-    desc: "Locate nearby blood centers, check availability, and schedule your next donation.",
-    img:fifth,
-    value:"Share Life"
+    desc: "Search nearby blood banks, check blood availability and contact them instantly.",
+    img: fifth,
+    value: "Find Blood Banks"
   }
 ];
 const OurFeatures = () => {
@@ -46,7 +46,7 @@ const OurFeatures = () => {
       <h2 className='text-white title text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-center mb-8 sm:mb-12 md:mb-16'><Typewriter /></h2>
       <div className='flex justify-center flex-wrap gap-4 sm:gap-6 md:gap-8 w-full max-w-6xl mx-auto'>
        {features.map((item,index)=> (
-          <Cards key={index} title = {item.title} desc = {item.desc} value={item.value} img = {item.img} theme = {item.theme} />
+          <Cards key={index} {...item} />
        ))}
       </div>
     </div>
