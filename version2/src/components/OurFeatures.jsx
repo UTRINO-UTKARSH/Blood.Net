@@ -46,6 +46,7 @@ const OurFeatures = () => {
       <h2 className='text-white title text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-center mb-8 sm:mb-12 md:mb-16'><Typewriter
       className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl'
         deleteText={true}
+        cursor={"|"}
         loop={true}
         sentences={[
           "Choose Your Service",
