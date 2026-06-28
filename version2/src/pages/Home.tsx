@@ -6,6 +6,7 @@ import LightRays from '../components/LightRays'
 import OurFeatures from '../components/OurFeatures'
 import Stats from '../components/Stats'
 import Cta from '../components/Cta'
+import Problem from '../components/Problem'
 const Home = () => {
   return (
     <div className="bg-[#121212] max-h-fit">
@@ -41,11 +42,14 @@ const Home = () => {
         <div className="bg-[#121212] z-10 max-h-fit">
           <OurFeatures />
         </div>
+        <div className="bg-[#121212] z-10 max-h-fit">
+          <Problem />
+        </div>
         <div className='bg-[#121212] z-10 min-h-auto sm:min-h-96 md:min-h-[400px]'>
-          <Stats />
+          {/* <Stats /> */}
         </div>
         <div className='bg-[#121212] z-10 max-h-fit'>
-          <Cta />
+          {/* <Cta /> */}
         </div>
       </div>
     </div>

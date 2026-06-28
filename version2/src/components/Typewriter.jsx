@@ -1,57 +1,132 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-const useTypewriter = (words, speed = 100, pause = 3000) => {
-  const [displayText, setDisplayText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopIndex, setLoopIndex] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(speed);
+const useTypewriter = ({
+  sentences = [],
+  speed = 100,
+  pause = 2000,
+  deleteText = false,
+  loop = false,
+}) => {
+  const [displayText, setDisplayText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [phase, setPhase] = useState("typing");
+
+  const currentSentence = sentences[currentIndex] || "";
 
   useEffect(() => {
-    const handleTyping = () => {
-      const currentWordIndex = loopIndex % words.length;
-      const fullWord = words[currentWordIndex];
+    if (!currentSentence) return;
 
-      if (isDeleting) {
-        // Remove a character
-        setDisplayText(fullWord.substring(0, displayText.length - 1));
-        setTypingSpeed(speed / 2); // Delete faster
-      } else {
-        // Add a character
-        setDisplayText(fullWord.substring(0, displayText.length + 1));
-        setTypingSpeed(speed);
-      }
+    let timer;
 
-      // Logic: Word is fully typed
-      if (!isDeleting && displayText === fullWord) {
-        setTimeout(() => setIsDeleting(true), pause); // Wait before deleting
-      }
-      // Logic: Word is fully deleted
-      else if (isDeleting && displayText === '') {
-        setIsDeleting(false);
-        setLoopIndex(loopIndex + 1); // Move to next sentence
-      }
-    };
+    switch (phase) {
+      case "typing":
+        if (displayText.length < currentSentence.length) {
+          timer = setTimeout(() => {
+            setDisplayText(
+              currentSentence.substring(0, displayText.length + 1)
+            );
+          }, speed);
+        } else {
+          timer = setTimeout(() => {
+            setPhase("paused");
+          }, 0);
+        }
+        break;
 
-    const timer = setTimeout(handleTyping, typingSpeed);
+      case "paused":
+        timer = setTimeout(() => {
+          if (deleteText) {
+            setPhase("deleting");
+          } else {
+            setPhase("finished");
+          }
+        }, pause);
+        break;
+
+      case "deleting":
+        if (displayText.length > 0) {
+          timer = setTimeout(() => {
+            setDisplayText(
+              currentSentence.substring(0, displayText.length - 1)
+            );
+          }, speed / 2.2);
+        } else {
+          timer = setTimeout(() => {
+            if (loop) {
+              setCurrentIndex((prev) => (prev + 1) % sentences.length);
+              setPhase("typing");
+            } else {
+              setPhase("finished");
+            }
+          }, 0);
+        }
+        break;
+
+      default:
+        break;
+    }
+
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, loopIndex, words, speed, pause, typingSpeed]);
+  }, [
+    displayText,
+    currentSentence,
+    phase,
+    speed,
+    pause,
+    deleteText,
+    loop,
+    sentences.length,
+  ]);
 
-  return displayText;
+  const next = () => {
+    if (currentIndex < sentences.length - 1) {
+      setCurrentIndex((prev) => prev + 1);
+      setDisplayText("");
+      setPhase("typing");
+    } else if (loop) {
+      setCurrentIndex(0);
+      setDisplayText("");
+      setPhase("typing");
+    }
+  };
+
+  const reset = () => {
+    setCurrentIndex(0);
+    setDisplayText("");
+    setPhase("typing");
+  };
+
+  return {
+    displayText,
+    phase,
+    currentIndex,
+    next,
+    reset,
+  };
 };
 
-// Usage Component
-const Typewriter = () => {
-  const sentences = [
-    "Choose Your Service",
-    "Our Services",
-    "One Platform. Many Solutions."
-  ];
-  const displayText = useTypewriter(sentences);
+const Typewriter = ({
+  sentences = [],
+  speed,
+  pause,
+  deleteText,
+  loop,
+  className = "",
+}) => {
+  const { displayText } = useTypewriter({
+    sentences,
+    speed,
+    pause,
+    deleteText,
+    loop,
+  });
 
   return (
-    <div className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl'>
+    <div
+      className={` ${className}`}
+    >
       {displayText}
-      <span className="cursor"> |</span>
+      <span className="animate-pulse">|</span>
     </div>
   );
 };

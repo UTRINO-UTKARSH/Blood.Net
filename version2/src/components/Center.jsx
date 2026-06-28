@@ -26,7 +26,7 @@ const Center = () => {
             </div>
 
             {/* Subtitle */}
-            <div className='showup semi2 flex flex-col items-center text-center mt-10 px-4'>
+            <div className='showup flex flex-col items-center text-center mt-10 px-4'>
 
                 <span className='text-sm sm:text-base md:text-lg lg:text-xl font-bold bg-gray-200 rounded-full px-6 py-2 text-black'>
                     Connecting Care. Saving Lives.
