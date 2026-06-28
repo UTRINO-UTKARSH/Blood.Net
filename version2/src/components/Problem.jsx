@@ -2,14 +2,27 @@ import React, { useEffect, useRef, useState } from "react";
 import Typewriter from "./Typewriter";
 import StoryScreen from "./StoryScreen";
 const Problem = () => {
+  // const [isTyping, setisTyping] = useState(false)
+  //start here
+  //fix or make the check for the scroll and typing for option C
+  // const [isScrolled, setisScrolled] = useState(false)
   const sentinelRef = useRef(null);
   const [currentScreen, setScreen] = useState(0);
   const sectionRef = useRef(null);
   const [scrolled, setScrolled] = useState(false);
   const [inView, setInView] = useState(false);
   const handleText = () => {
+    // setisTyping(true)
     setScreen(currentScreen => currentScreen + 1)
   }
+  // useEffect(() => {
+
+  //   if (isTyping && isScrolled == true) {
+  //     setScreen(prev)
+
+  //   }
+
+  // }, [])
   useEffect(() => {
     const sentinel = sentinelRef.current;
     if (!sentinel) return;
@@ -80,8 +93,8 @@ const Problem = () => {
     <div className="intro relative text-white px-4 sm:px-6">
       <div
         className={`sticky flex flex-col top-9 z-50 items-center justify-center transition-all duration-500 ease-out mx-auto w-full px-8 ${scrolled
-            ? "py-5 bg-black rounded-3xl shadow-2xl"
-            : "py-6 sm:py-14 bg-transparent"
+          ? "py-5 bg-black rounded-3xl shadow-2xl"
+          : "py-6 sm:py-14 bg-transparent"
           }`}
       >
         <span
@@ -110,7 +123,8 @@ const Problem = () => {
             text={story[currentScreen]}
             onComplete={handleText}
           />
-          //map logic heavy
+          //map logic heavy option B
+          //option A just was heavy as fuck so changed it...🥲
           // story.map((item,index) => (
           //   <StoryScreen
           //     key={index}
