@@ -7,6 +7,7 @@ import OurFeatures from '../components/OurFeatures'
 import Stats from '../components/Stats'
 import Cta from '../components/Cta'
 import Problem from '../components/Problem'
+import Solution from '../components/Solution.jsx'
 const Home = () => {
   return (
     <div className="bg-[#121212] max-h-fit">
@@ -43,9 +44,12 @@ const Home = () => {
           <OurFeatures />
         </div>
         <div className="bg-[#121212] z-10 max-h-fit">
-          <Problem />
+          <Problem onStoryEnd={() => {}} />
         </div>
-        <div className='bg-[#121212] z-10 min-h-auto sm:min-h-96 md:min-h-[400px]'>
+        <div className="bg-[#121212] z-10 max-h-fit">
+          <Solution />
+        </div>
+        <div className='bg-[#121212] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
           {/* <Stats /> */}
         </div>
         <div className='bg-[#121212] z-10 max-h-fit'>
