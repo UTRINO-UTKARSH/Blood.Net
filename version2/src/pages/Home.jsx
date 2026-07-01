@@ -51,14 +51,11 @@ const Home = () => {
         <div className="bg-[#121212] z-10 max-h-fit">
           <StoryBoard title1={'When Every'} title2={"Choice Matters..."} data={sol} />
         </div>
-        {/* <div className="bg-[#121212] z-10 max-h-fit">
-          <Solution />
-        </div> */}
         <div className='bg-[#121212] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
-          {/* <Stats /> */}
+          <Stats />
         </div>
         <div className='bg-[#121212] z-10 max-h-fit'>
-          {/* <Cta /> */}
+          <Cta />
         </div>
       </div>
     </div>

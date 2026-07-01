@@ -1,1 +1,0 @@
-alert("new option c in progress, initally mapping the entire array of story casued lag since \n everything was dumped at once,then moved to this option c")
