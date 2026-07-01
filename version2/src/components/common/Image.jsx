@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 // import handImage from '../assets/hand6.png'
-import lefthand from '../assets/lefthand.png'
-import righthand from '../assets/righthand.png'
+import lefthand from '../../assets/lefthand.png'
+import righthand from '../../assets/righthand.png'
 const Image = () => {
   const [isVisible, setIsVisible] = useState(true)
 

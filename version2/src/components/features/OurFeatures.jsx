@@ -1,11 +1,11 @@
 import React from 'react'
-import Cards from './Cards'
-import Typewriter from './Typewriter'
-import first from '../assets/connect2.png'
-import second from '../assets/doctor.png'
-import third from '../assets/donor.png'
-import fourth from '../assets/ambulance.png'
-import fifth from '../assets/blood_bank.png'
+import Cards from '../hero/Cards'
+import Typewriter from '../Story/Typewriter'
+import first from '../../assets/connect2.png'
+import second from '../../assets/doctor.png'
+import third from '../../assets/donor.png'
+import fourth from '../../assets/ambulance.png'
+import fifth from '../../assets/blood_bank.png'
 const features = [
   {
     title: "Need Blood?",

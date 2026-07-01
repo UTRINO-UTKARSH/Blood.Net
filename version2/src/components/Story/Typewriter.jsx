@@ -1,4 +1,4 @@
-import { useTypewriter } from "../hooks/useTypewriter";
+import { useTypewriter } from "../../hooks/useTypewriter";
 const Typewriter = ({
   cursor,
   sentences = [],
