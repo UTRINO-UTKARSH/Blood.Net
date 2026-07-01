@@ -98,6 +98,7 @@ export const useTypewriter = ({
   return {
     displayText,
     phase,
+    speed,
     currentIndex,
     next,
     reset,

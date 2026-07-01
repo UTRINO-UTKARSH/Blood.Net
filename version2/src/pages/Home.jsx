@@ -1,13 +1,15 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import Center from '../components/Center'
-import Image from '../components/Image'
-import LightRays from '../components/LightRays'
-import OurFeatures from '../components/OurFeatures'
-import Stats from '../components/Stats'
-import Cta from '../components/Cta'
-import Problem from '../components/Problem'
-import Solution from '../components/Solution.jsx'
+import Navbar from '../components/Navbar.jsx'
+import Center from '../components/Center.jsx'
+import Image from '../components/Image.jsx'
+import LightRays from '../components/LightRays.jsx'
+import OurFeatures from '../components/OurFeatures.jsx'
+import Stats from '../components/Stats.jsx'
+import Cta from '../components/Cta.jsx'
+import StoryBoard from '../components/StoryBoard.jsx'
+// import Solution from '../components/Solution.jsx'
+import {STORY} from "../data/act1"
+import {sol} from "../data/act2"
 const Home = () => {
   return (
     <div className="bg-[#121212] max-h-fit">
@@ -44,11 +46,14 @@ const Home = () => {
           <OurFeatures />
         </div>
         <div className="bg-[#121212] z-10 max-h-fit">
-          <Problem onStoryEnd={() => {}} />
+          <StoryBoard title1={'When Every'} title2={"Second Matters..."} data={STORY}/>
         </div>
         <div className="bg-[#121212] z-10 max-h-fit">
-          <Solution />
+          <StoryBoard title1={'When Every'} title2={"Choice Matters..."} data={sol} />
         </div>
+        {/* <div className="bg-[#121212] z-10 max-h-fit">
+          <Solution />
+        </div> */}
         <div className='bg-[#121212] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
           {/* <Stats /> */}
         </div>

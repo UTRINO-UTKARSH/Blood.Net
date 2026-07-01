@@ -7,13 +7,9 @@ const StoryScreen = ({text = "",className,cursor="",onComplete}) => {
     sentences:[text],
     pause:1500,
     loop: false,
+    speed:99,
     deleteText:false
   })
-  // useEffect(() => {
-  //   setDisplayText("");
-  //   setPhase("typing");
-
-  // },[sentences])
   useEffect(() => {
     if(phase==='finished'){
       onComplete?.()
@@ -25,9 +21,6 @@ const StoryScreen = ({text = "",className,cursor="",onComplete}) => {
       <span className='animate-pulse'>
         {cursor}
       </span>
-        {/* <Typewriter 
-        cursor={'_'}
-        sentences={[text]} /> */}
     </div>
   )
 }

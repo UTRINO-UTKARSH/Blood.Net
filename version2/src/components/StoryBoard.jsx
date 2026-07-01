@@ -1,24 +1,10 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import StoryScreen from "./StoryScreen";
-// the code in the ../components/mid-refactors are refactored again by claud to optimize it
-const STORY = [
-  "Medical emergencies\nnever come with\na warning.",
-  "One moment...\neverything feels\nnormal.",
-  "Then suddenly...\nsomeone you love\nneeds immediate help.",
-  "You call\nfor help.\nAn ambulance\nis already\non its way.",
-  "But while\nhelp is coming...\nyour mind\nstarts racing.",
-  "Which hospital\nshould we go to?",
-  "Will they have\nthe blood\nthat's needed?",
-  "What should\nI do\nright now?",
-  "How can I help\nbefore\nprofessionals arrive?",
-  "Am I making\nthe right\ndecisions?",
-  "The hardest moments\naren't always\nabout waiting.",
-  "Sometimes...\nit's simply\nnot knowing\nwhat to do next.",
-];
+// the code in the ../components/mid-refactors are refactored here again by claud to optimize it
 
 const TOUCH_THRESHOLD_PX = 1;
 
-const Problem = ({ onStoryEnd }) => {
+const StoryBoard = ({ onStoryEnd,title1,title2,data }) => {
   const [currentScreen, setCurrentScreen] = useState(0);
   const [inView,        setInView]        = useState(false);
   const [scrolled,      setScrolled]      = useState(false);
@@ -29,13 +15,13 @@ const Problem = ({ onStoryEnd }) => {
   const sentinelRef       = useRef(null);
   const sectionRef        = useRef(null);
 
-  // ── Advance story ──────────────────────────────────────────────────────────
+  // ── Advance story /sroll effect
   const advance = useCallback(() => {
     if (!waitingForAdvance.current || isAtEnd.current) return;
     waitingForAdvance.current = false;
     setCurrentScreen((prev) => {
       const next = prev + 1;
-      if (next >= STORY.length) {
+      if (next >= data.length) {
         isAtEnd.current = true;
         document.body.style.overflow = "";
         onStoryEnd?.();
@@ -43,9 +29,9 @@ const Problem = ({ onStoryEnd }) => {
       }
       return next;
     });
-  }, [onStoryEnd]);
+  }, [onStoryEnd,data]);
 
-  // ── Called when typewriter finishes ───────────────────────────────────────
+  // ── Called when typewriter finishes 
   const handleTypingComplete = useCallback(() => {
     if (isAtEnd.current) return;
     waitingForAdvance.current = true;
@@ -126,11 +112,11 @@ const Problem = ({ onStoryEnd }) => {
         >
           <span className={`font-bold tracking-tight text-center transition-all duration-500
             ${scrolled ? "text-4xl md:text-6xl" : "text-6xl md:text-7xl"}`}>
-            When Every
+            {title1}
           </span>
           <span className={`font-semibold text-center transition-all duration-500
             ${scrolled ? "text-lg md:text-2xl" : "text-2xl md:text-4xl"}`}>
-            Second Matters...
+            {title2}
           </span>
         </div>
 
@@ -138,14 +124,16 @@ const Problem = ({ onStoryEnd }) => {
 
         <div
           ref={sectionRef}
-          className="whitespace-pre-wrap justify-center items-center gap-5 flex-col flex py-2 h-screen"
+          className="whitespace-pre-wrap justify-center items-center gap-5 flex-col flex py-2 min-h-screen"
         >
           {inView && (
             <StoryScreen
               key={currentScreen}
               cursor="_"
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl px-20 py-15 storyScreen-intro"
-              text={STORY[currentScreen]}
+              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl px-20 py-15 storyScreen-intro ${data[currentScreen].type == "question"
+                ?"text-red-400 drop-shadow-[0_0_12px_rgba(220,38,38,0.8)] animate-pulse"
+                :"text-white"}`}
+              text={data[currentScreen].text}
               onComplete={handleTypingComplete}
             />
           )}
@@ -156,4 +144,4 @@ const Problem = ({ onStoryEnd }) => {
   );
 };
 
-export default Problem;
+export default StoryBoard;
