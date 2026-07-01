@@ -7,7 +7,7 @@ const StoryScreen = ({text = "",className,cursor="",onComplete}) => {
     sentences:[text],
     pause:1500,
     loop: false,
-    speed:99,
+    speed:95,
     deleteText:false
   })
   useEffect(() => {

@@ -23,7 +23,7 @@ const StoryBoard = ({ onStoryEnd,title1,title2,data }) => {
       const next = prev + 1;
       if (next >= data.length) {
         isAtEnd.current = true;
-        // document.body.style.overflow = "";
+        document.body.style.overflow = "";
         onStoryEnd?.();
         return prev;
       }
@@ -42,7 +42,7 @@ const StoryBoard = ({ onStoryEnd,title1,title2,data }) => {
   // the user has intentionally scrolled the section into full view.
   useEffect(() => {
     if (!inView || isAtEnd.current) return;
-    // document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
   }, [inView]);
 
@@ -107,7 +107,7 @@ const StoryBoard = ({ onStoryEnd,title1,title2,data }) => {
 
         <div
           className={`sticky flex flex-col top-9 z-50 items-center justify-center
-            transition-all duration-500 ease-out mx-auto w-full px-8
+            transition-all duration-500 ease-out mx-auto w-fit px-40
             ${scrolled ? "py-5 bg-black rounded-3xl shadow-2xl" : "py-6 sm:py-14 bg-transparent"}`}
         >
           <span className={`font-bold tracking-tight text-center transition-all duration-500

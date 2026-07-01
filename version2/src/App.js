@@ -1,0 +1,1 @@
+// alert('for the developer complete compare section')

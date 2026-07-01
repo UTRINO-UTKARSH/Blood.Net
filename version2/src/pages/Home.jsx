@@ -10,9 +10,10 @@ import StoryBoard from '../components/Story/StoryBoard.jsx'
 // import Solution from '../components/Solution.jsx'
 import {STORY} from "../data/act1"
 import {sol} from "../data/act2"
+import Comparison from '../components/comparison/Comparison.jsx'
 const Home = () => {
   return (
-    <div className="bg-[#121212] max-h-fit">
+    <div className="bg-[#0A0B10] max-h-fit">
      
       <div className="relative min-h-screen">
 
@@ -42,19 +43,22 @@ const Home = () => {
           </div>
         </div>
         {/* FEATURES SECTION */}
-        <div className="bg-[#121212] z-10 max-h-fit">
+        <div className="bg-[#0A0B10] z-10 max-h-fit">
           <OurFeatures />
         </div>
-        <div className="bg-[#121212] z-10 max-h-fit">
+        <div className="bg-[#0A0B10] z-10 max-h-fit">
           <StoryBoard title1={'When Every'} title2={"Second Matters..."} data={STORY}/>
         </div>
-        <div className="bg-[#121212] z-10 max-h-fit">
+        <div className="bg-[#0A0B10] z-10 max-h-fit">
           <StoryBoard title1={'When Every'} title2={"Choice Matters..."} data={sol} />
         </div>
-        <div className='bg-[#121212] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
+        <div className='bg-[#0A0B10] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
+          <Comparison />
+        </div>
+        <div className='bg-[#0A0B10] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
           <Stats />
         </div>
-        <div className='bg-[#121212] z-10 max-h-fit'>
+        <div className='bg-[#0A0B10] z-10 max-h-fit'>
           <Cta />
         </div>
       </div>

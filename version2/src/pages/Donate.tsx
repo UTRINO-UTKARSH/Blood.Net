@@ -1,5 +1,5 @@
 import React from 'react'
-import LightRays from '../components/LightRays'
+import LightRays from '../components/common/LightRays'
 const Donate = () => {
   return (
     <div className="bg-[#121212] min-h-full">

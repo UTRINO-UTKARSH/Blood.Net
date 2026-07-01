@@ -2,7 +2,7 @@ import React from 'react'
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar'
+import Navbar from './components/common/Navbar'
 import Home from './pages/Home'
 import Donate from './pages/Donate'
 const App = () => {
@@ -30,7 +30,7 @@ const App = () => {
   }, []);
   return (
     <BrowserRouter>
-      <div className="bg-[#121212] min-h-full">
+      <div className="bg-[#0A0B10] min-h-full">
 
         {/* Navbar is HERE — outside Routes, so it shows on every page */}
         <div className="relative pt-13 px-4 sm:px-0">
