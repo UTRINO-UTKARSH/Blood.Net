@@ -65,7 +65,7 @@ const ClockIcon = () => (
 
 const Comparison = () => {
   return (
-    <div className='min-h-screen py-20 flex-col gap-3 flex items-center px-4'>
+    <div className='intro min-h-screen py-20 flex-col gap-3 flex items-center px-4'>
 
       {/* Eyebrow badge */}
       <div className='border z-50 text-4xl bg-red-900/20 flex justify-center text-center max-w-fit rounded-xl
@@ -86,10 +86,7 @@ const Comparison = () => {
 
       {/* Comparison cards */}
       <div className='z-50 w-full max-w-6xl mt-10'>
-        <div className='relative grid grid-cols-1 md:grid-cols-2  gap-2 border border-[#870e36c8] rounded-2xl p-6 md:p-10'>
-
-          {/* Vertical divider (desktop only) */}
-          {/* <div className='hidden md:block absolute left-1/2 top-7 bottom-10 w-px bg-[#8d3d52] -translate-x-1/2' /> */}
+        <div className='relative  grid grid-cols-1 md:grid-cols-2 gap-2 border border-[#870e36c8] rounded-2xl p-6 md:p-10'>
 
           {/* VS badge */}
           <div className='hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
@@ -98,8 +95,8 @@ const Comparison = () => {
           </div>
 
           {/* WITHOUT column */}
-          <div className='flex flex-col items-center bg-[#150C0F] rounded-xl px-9'>
-            <div className='bg-[#4F3F40] rounded-full px-4 py-1.5 mb-6'>
+          <div className='flex flex-col items-center bg-[#150C0F] rounded-xl px-7'>
+            <div className='bg-[#4F3F40] rounded-full px-4 py-1.5 mb-4'>
               <span className='text-white text-xs font-semibold tracking-wider'>WITHOUT BLOOD.NET</span>
             </div>
             <SadFaceIcon />
@@ -117,8 +114,8 @@ const Comparison = () => {
           </div>
 
           {/* WITH column */}
-          <div className='flex flex-col items-center bg-[#08090F] rounded-xl px-9'>
-            <div className='bg-[#39393F] rounded-full px-4 py-1.5 mb-6'>
+          <div className='flex flex-col items-center bg-[#08090F] rounded-xl px-7'>
+            <div className='bg-[#39393F] rounded-full px-4 py-1.5 mb-4'>
               <span className='text-white text-xs font-semibold tracking-wider'>WITH BLOOD.NET</span>
             </div>
             <ShieldCheckIcon />
