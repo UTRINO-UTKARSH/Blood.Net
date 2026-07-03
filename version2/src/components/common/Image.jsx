@@ -9,7 +9,7 @@ const Image = () => {
     const handleScroll = () => {
       const viewportHeight = window.innerHeight
 
-      const scrollThreshold = viewportHeight * 0.7
+      const scrollThreshold = viewportHeight * 0.5
       if (window.scrollY > scrollThreshold) {
         setIsVisible(false)
       } else {
@@ -26,8 +26,7 @@ const Image = () => {
       className={`absolute mt-[20%] sm:mt-[35%] md:mt-[40%] pointer-events-none img transition-all duration-300 hidden sm:block ${isVisible ? 'opacity-100' : 'opacity-0 invisible'
         }`}
     >
-      {/* <img className='invert w-48 sm:w-56  md:w-64 lg:w-auto' src={handImage} alt="Donor hand" /> */}
-      <div className='flex w-[45vw] max-w-[1800px] mt-40 gap-[5vw] justify-center items-center '>
+      <div className='flex w-[45vw] max-w-450 mt-40 gap-[5vw] justify-center items-center '>
         <img className=' w-48 mt-18 sm:w-56  md:w-64 lg:w-auto' src={lefthand} alt="Donor hand" />
         <img className='mx-6 invert w-48 sm:w-56  md:w-64 lg:w-auto' src={righthand} alt="Donor hand" />
       </div>

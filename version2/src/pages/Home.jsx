@@ -6,11 +6,11 @@ import LightRays from '../components/common/LightRays.jsx'
 import OurFeatures from '../components/features/OurFeatures.jsx'
 import Stats from '../components/Stats.jsx'
 import Cta from '../components/footer/Cta.jsx'
-import StoryBoard from '../components/Story/StoryBoard.jsx'
-// import Solution from '../components/Solution.jsx'
+// import StoryBoard from '../components/Story/StoryBoard.jsx'
 import {STORY} from "../data/act1"
 import {sol} from "../data/act2"
 import Comparison from '../components/comparison/Comparison.jsx'
+import Problem  from '../components/Story/Problem.jsx'
 const Home = () => {
   return (
     <div className="bg-[#0A0B10] max-h-fit">
@@ -43,23 +43,29 @@ const Home = () => {
           </div>
         </div>
         {/* FEATURES SECTION */}
-        <div className="bg-[#0A0B10] z-10 max-h-fit">
-          <OurFeatures />
-        </div>
-        <div className="bg-[#0A0B10] z-10 max-h-fit">
+        {/* <div className="bg-[#0A0B10] z-10 max-h-fit">
           <StoryBoard title1={'When Every'} title2={"Second Matters..."} data={STORY}/>
         </div>
         <div className="bg-[#0A0B10] z-10 max-h-fit">
           <StoryBoard title1={'When Every'} title2={"Choice Matters..."} data={sol} />
+        </div> */}
+        <div className='bg-[#0A0B10] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
+           <Problem title1={'When Every'} title2={"Second Matters..."} data={STORY}/>
+        </div>
+        <div className='bg-[#0A0B10] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
+           <Problem title1={'When Every'} title2={"Choice Matters..."} data={sol}/>
         </div>
         <div className='bg-[#0A0B10] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
           <Comparison />
         </div>
-        <div className='bg-[#0A0B10] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
-          <Stats />
-        </div>
         <div className='bg-[#0A0B10] z-10 max-h-fit'>
           <Cta />
+        </div>
+        <div className="bg-[#0A0B10] z-10 max-h-fit">
+          <OurFeatures />
+        </div>
+        <div className='bg-[#0A0B10] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
+          <Stats />
         </div>
       </div>
     </div>

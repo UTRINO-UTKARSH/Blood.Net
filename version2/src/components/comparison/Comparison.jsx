@@ -66,14 +66,10 @@ const ClockIcon = () => (
 const Comparison = () => {
   return (
     <div className='intro min-h-screen py-20 flex-col gap-3 flex items-center px-4'>
-
-      {/* Eyebrow badge */}
       <div className='border z-50 text-4xl bg-red-900/20 flex justify-center text-center max-w-fit rounded-xl
         px-5 py-4 transition-all duration-300 hover:scale-105 items-center border-red-900'>
         <h1 className='text-[#f70101] text-sm font-bold tracking-widest'>THE DIFFERENCE</h1>
       </div>
-
-      {/* Heading */}
       <div className='flex text-center flex-col z-50'>
         <span className='text-6xl md:text-8xl font-bold text-white'>Two Different</span>
         <span className='text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-linear-to-b 
@@ -83,18 +79,12 @@ const Comparison = () => {
           <span>The experience doesn't have to be.</span>
         </div>
       </div>
-
-      {/* Comparison cards */}
       <div className='z-50 w-full max-w-6xl mt-10'>
         <div className='relative  grid grid-cols-1 md:grid-cols-2 gap-2 border border-[#870e36c8] rounded-2xl p-6 md:p-10'>
-
-          {/* VS badge */}
           <div className='hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
             w-14 h-14 rounded-full bg-black border border-white/20 items-center justify-center z-10'>
             <span className='text-white font-bold text-sm'>VS</span>
           </div>
-
-          {/* WITHOUT column */}
           <div className='flex flex-col items-center bg-[#150C0F] rounded-xl px-7'>
             <div className='bg-[#4F3F40] rounded-full px-4 py-1.5 mb-4'>
               <span className='text-white text-xs font-semibold tracking-wider'>WITHOUT BLOOD.NET</span>
@@ -112,8 +102,6 @@ const Comparison = () => {
               ))}
             </div>
           </div>
-
-          {/* WITH column */}
           <div className='flex flex-col items-center bg-[#08090F] rounded-xl px-7'>
             <div className='bg-[#39393F] rounded-full px-4 py-1.5 mb-4'>
               <span className='text-white text-xs font-semibold tracking-wider'>WITH BLOOD.NET</span>
@@ -132,8 +120,6 @@ const Comparison = () => {
             </div>
           </div>
         </div>
-
-        {/* Bottom summary bar */}
         <div className='mt-6 border border-[#2A1518] rounded-2xl bg-[#232326] px-6 md:px-10 py-6
           flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10'>
           <div className='flex items-center gap-4'>
@@ -148,8 +134,6 @@ const Comparison = () => {
           </p>
         </div>
       </div>
-
-      {/* Closing line */}
       <div className='flex flex-col items-center text-center mt-10 z-50'>
         <h3 className='text-3xl font-bold text-white'>
           That's why <span className='text-[#CD4137]'>Blood.net</span> exists.
