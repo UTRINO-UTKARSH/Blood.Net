@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react'
-import { Features } from 'tailwindcss'
-import Typewriter from './Typewriter'
 import { useTypewriter } from '../../hooks/useTypewriter'
 const StoryScreen = ({text = "",className,cursor="",onComplete}) => {
   const {displayText,phase} = useTypewriter({

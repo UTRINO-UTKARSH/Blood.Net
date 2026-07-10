@@ -42,13 +42,6 @@ const Home = () => {
             <Image />
           </div>
         </div>
-        {/* FEATURES SECTION */}
-        {/* <div className="bg-[#0A0B10] z-10 max-h-fit">
-          <StoryBoard title1={'When Every'} title2={"Second Matters..."} data={STORY}/>
-        </div>
-        <div className="bg-[#0A0B10] z-10 max-h-fit">
-          <StoryBoard title1={'When Every'} title2={"Choice Matters..."} data={sol} />
-        </div> */}
         <div className='bg-[#0A0B10] z-10 min-h-auto sm:min-h-96 md:min-h-100'>
            <Problem title1={'When Every'} title2={"Second Matters..."} data={STORY}/>
         </div>
