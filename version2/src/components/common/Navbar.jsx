@@ -22,6 +22,7 @@ const Navbar = () => {
   return (
     <>
       <nav className={`fixed left-1/2 -translate-x-1/2 z-50 flex items-center justify-between rounded-full Nav shadow-xl gap-1 sm:gap-2 md:gap-6 transition-all duration-300
+     <nav className={`fixed left-1/2 -translate-x-1/2 z-50 flex items-center justify-between rounded-full Nav shadow-xl gap-1 sm:gap-4 md:gap-6 transition-all duration-300
   ${scrolled
           ? "top-0 md:w-[95%] max-w-5xl bg-[#1f1f1f]/90 backdrop-blur-xl shadow-2xl py-2 px-6"
           : "top-5 w-[95%] md:w-full max-w-5xl bg-white/30 backdrop-blur-md py-1 sm:py-2 px-2 md:px-6"
@@ -32,7 +33,7 @@ const Navbar = () => {
           <span className='text-white p-1 rounded-full text-xs sm:text-sm'>
             <img src='/favi.svg' alt='Blood.net logo' className='w-8 h-8 rounded-2xl sm:w-6 sm:h-6 object-contain' />
           </span>
-          <span className='hidden sm:inline'>BLOOD.NET</span>
+          <span className='hidden sm:inline'>blood<span className='hidden sm:inline text-transparent bg-clip-text bg-linear-to-b from-[#FF6B6B] via-[#f12727] to-[#B91C1C]'>.net</span></span>
           <span className='sm:hidden'>BLOOD</span>
         </div>
 
@@ -80,6 +81,8 @@ const Navbar = () => {
           {/* Login */}
           <button className="bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 active:scale-95 transition-all shadow-md text-[9px] px-2 py-1 sm:text-sm sm:px-4 sm:py-2 leading-tight">
             Login
+          <button className='bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 active:scale-95 transition-all shadow-md text-[10px] px-2.5 py-1.5 sm:text-xs sm:px-3 sm:py-2 md:text-sm md:px-4 md:py-2 leading-tight'>
+            <Link to="/login">Login</Link>
           </button>
 
           {/* Hamburger — mobile only */}

@@ -38,21 +38,6 @@ const Problem = ({data,title1,title2}) => {
       <div className="relative flex flex-col top-9 z-50 items-center justify-center transition-all duration-500 ease-out mx-auto w-full px-8">
         <span className="text-8xl font-sans tracking-wider font-bold">{title1}</span>
         <span className="text-5xl font-semibold tracking-wider">{title2}</span>
-
-        {/* <span
-          className={`font-bold tracking-tight text-center transition-all duration-500 ${
-            scrolled ? "text-4xl md:text-6xl" : "text-6xl md:text-7xl"
-          }`}
-        >
-          When Every
-        </span>
-        <span
-          className={`font-semibold text-center transition-all duration-500 ${
-            scrolled ? "text-lg md:text-2xl" : "text-2xl md:text-4xl"
-          }`}
-        >
-          Second Matters...
-        </span> */}
       </div>
 
       <div ref={sentinelRef} className="h-px w-full" aria-hidden="true" />
