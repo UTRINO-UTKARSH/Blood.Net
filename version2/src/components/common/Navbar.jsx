@@ -1,31 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 const Navbar = () => {
-  const [scrolled,setscrolled] = useState(false);
+  const [scrolled, setscrolled] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     let ticking = false
-    const handelscroll = ()=>{
-      if(!ticking){
-        requestAnimationFrame(()=>{
-          setscrolled(window.scrollY>80);
+    const handelscroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setscrolled(window.scrollY > 80);
           ticking = false
         })
         ticking = true
       }
     }
-    window.addEventListener('scroll',handelscroll,{passive:true})
-    return ()=>{window.removeEventListener('scroll',handelscroll)}
-  },[])
+    window.addEventListener('scroll', handelscroll, { passive: true })
+    return () => { window.removeEventListener('scroll', handelscroll) }
+  }, [])
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
+      <nav className={`fixed left-1/2 -translate-x-1/2 z-50 flex items-center justify-between rounded-full Nav shadow-xl gap-1 sm:gap-2 md:gap-6 transition-all duration-300
      <nav className={`fixed left-1/2 -translate-x-1/2 z-50 flex items-center justify-between rounded-full Nav shadow-xl gap-1 sm:gap-4 md:gap-6 transition-all duration-300
   ${scrolled
-    ? "top-0 w-[95%] max-w-5xl bg-[#1f1f1f]/90 backdrop-blur-xl shadow-2xl py-2 px-6"
-    : "top-5 w-[95%] md:w-full max-w-5xl bg-white/30 backdrop-blur-md py-1 sm:py-2 px-2 md:px-6"
-  }`}>
+          ? "top-0 md:w-[95%] max-w-5xl bg-[#1f1f1f]/90 backdrop-blur-xl shadow-2xl py-2 px-6"
+          : "top-5 w-[95%] md:w-full max-w-5xl bg-white/30 backdrop-blur-md py-1 sm:py-2 px-2 md:px-6"
+        }`}>
 
         {/* Logo */}
         <div className='text-sm sm:text-base md:text-lg cursor-pointer font-bold text-white flex items-center gap-1 sm:gap-2 shrink-0'>
@@ -78,6 +79,8 @@ const Navbar = () => {
           </button>
 
           {/* Login */}
+          <button className="bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 active:scale-95 transition-all shadow-md text-[9px] px-2 py-1 sm:text-sm sm:px-4 sm:py-2 leading-tight">
+            Login
           <button className='bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 active:scale-95 transition-all shadow-md text-[10px] px-2.5 py-1.5 sm:text-xs sm:px-3 sm:py-2 md:text-sm md:px-4 md:py-2 leading-tight'>
             <Link to="/login">Login</Link>
           </button>
