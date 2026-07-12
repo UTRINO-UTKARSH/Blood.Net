@@ -7,8 +7,6 @@ import Donate from './pages/Donate'
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
-const App = () => {
-
 const AppContent = () => {
   const sentinelRef = useRef(null);
   const pageContentRef = useRef(null);
@@ -41,27 +39,20 @@ const AppContent = () => {
   return (
     <div className="bg-[#0A0B10] min-h-full">
       {showNavbar && (
-        <div className="relative pt-13 px-4 sm:px-0">
-          <Navbar />
-        </div>
-        <div ref={sentinelRef} className="h-px w-full" /> 
-       <div id="page-content" className="transition-all duration-300">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Donate" element={<Donate />} />
-            <Route path="/donate" element={<Donate />} />
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/signup' element={<Signup/>}/>
-          </Routes>
-        </div>
+        <>
+          <div className="relative pt-13 px-4 sm:px-0">
+            <Navbar />
+          </div>
+          <div ref={sentinelRef} className="h-px w-full" />
+        </>
       )}
-
-      <div ref={sentinelRef} className="h-px w-full" />
 
       <div ref={pageContentRef} id="page-content" className="transition-all duration-300">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/donate" element={<Donate />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>
     </div>
@@ -76,4 +67,4 @@ const App = () => {
   );
 };
 
-export default App
+export default App;
