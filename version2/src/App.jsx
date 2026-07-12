@@ -5,6 +5,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/common/Navbar'
 import Home from './pages/Home'
 import Donate from './pages/Donate'
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+
 const App = () => {
   const sentinelRef = useRef(null);
 
@@ -42,6 +45,8 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/Donate" element={<Donate />} />
             <Route path="/donate" element={<Donate />} />
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/signup' element={<Signup/>}/>
           </Routes>
         </div>
       </div>
