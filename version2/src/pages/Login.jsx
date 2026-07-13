@@ -67,6 +67,9 @@ const Login = () => {
               </div>
             </div>
           </div>
+
+          {/* PROBLEM TRY UNCOMENTING */}
+          
           {/* <div className='h-40 w-40 overflow-hidden'>
             <img src={drop} alt="" className='w-full h-full object-contain block' />
           </div> */}
