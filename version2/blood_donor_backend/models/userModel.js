@@ -17,6 +17,10 @@ const userSchema = new schema({
     profilePic:{
         type:String,
         default:""
+    },
+    category:{
+        type:String,
+        required:true
     }
 },{timestamps:true})
 

@@ -8,8 +8,8 @@ const connectDb = require('../lib/db.js');
 exports.signup = async (req,res)=>{
     await connectDb();
     try {
-        const {name,email,password} = req.body;
-        if(!name || !email || !password){
+        const {name,email,password,category} = req.body;
+        if(!name || !email || !password || !category){
            return res.status(400).json({message:"All fields are mandatory!"});
         }
         if(!validator.isEmail(email)){
@@ -26,14 +26,14 @@ exports.signup = async (req,res)=>{
         }
         const newpw = await bcrypt.hash(password,10);
 
-        const newuser = await user.create({name,email,password:newpw});
+        const newuser = await user.create({name,email,password:newpw,category});
 
         generateToken(res,newuser._id);
 
         return res.status(200).json({message:"Signed Up succesfully!"});
         
 
-        return res.status(200).json({message:"Signed Up succesfully"},{name,email,password})
+        // return res.status(200).json({message:"Signed Up succesfully"},{name,email,password})
     } catch (error) {
         console.log(error);
     }
@@ -43,7 +43,7 @@ exports.login = async (req,res)=>{
     await connectDb();
     try {
         const {email,password} = req.body;
-        if(!email || !password){
+        if(!email || !password ){
            return res.status(400).json({message:"All fields are mandatory!"});
         }
         if(!validator.isEmail(email)){
