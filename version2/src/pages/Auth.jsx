@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import drop from '../assets/drop.svg'
-import Auth1_Login from '../components/features/Auth1_Login'
-import Auth1_SignUp from '../components/features/Auth1_SignUp'
-const Login = () => {
+import Auth1_Login from '../components/features/Auth_Login'
+import Auth1_SignUp from '../components/features/Auth_SignUp'
+const Auth = () => {
   const [activeTab, setActiveTab] = useState('login')
   return (
 
@@ -111,4 +111,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Auth

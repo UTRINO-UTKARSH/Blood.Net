@@ -101,7 +101,7 @@ const Navbar = () => {
       >
         <ul className='flex flex-col font-medium text-white p-4 gap-4'>
           <li><Link to="/" className='hover:text-red-600 transition-colors text-base' onClick={() => setIsOpen(false)}>Home</Link></li>
-          <li><Link to="/Donate" className='hover:text-red-600 transition-colors text-base' onClick={() => setIsOpen(false)}>Services</Link></li>
+          <li><Link to="/" className='hover:text-red-600 transition-colors text-base' onClick={() => setIsOpen(false)}>Services</Link></li>
           <li className='hover:text-red-600 cursor-pointer transition-colors text-base'>Knowledge</li>
           <li className='hover:text-red-600 cursor-pointer transition-colors text-base'>About</li>
           <li className='hover:text-red-600 cursor-pointer transition-colors text-base'>Help</li>

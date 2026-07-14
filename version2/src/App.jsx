@@ -3,16 +3,15 @@ import { useRef, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/common/Navbar'
 import Home from './pages/Home'
-import Donate from './pages/Donate'
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import DashBoard from './pages/DashBoard'
+import Auth from './pages/Auth';
 
 const AppContent = () => {
   const sentinelRef = useRef(null);
   const pageContentRef = useRef(null);
   const location = useLocation();
 
-  const hideNavbarRoutes = ['/login', '/signup'];
+  const hideNavbarRoutes = ['/login', '/signup', '/dashboard'];
   const showNavbar = !hideNavbarRoutes.includes(location.pathname.toLowerCase());
 
   useEffect(() => {
@@ -50,9 +49,8 @@ const AppContent = () => {
       <div ref={pageContentRef} id="page-content" className="transition-all duration-300">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/donate" element={<Donate />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Auth />} />
+          <Route path="/dashboard" element={<DashBoard />} />
         </Routes>
       </div>
     </div>

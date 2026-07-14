@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-
+import { Navigate, useNavigate } from 'react-router-dom';
 const Auth1_Login = () => {
   const [showPassword, setShowPassword] = useState(false)
-  const [password, setPassword] = useState(' ');
+  const [password, setPassword] = useState('');
   const [email, setEmail] = useState('')
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("");
+  const Navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
@@ -24,15 +25,20 @@ const Auth1_Login = () => {
       }
 
       // handle success (redirect, store token, switch tab, etc.)
-      setSuccess("Successfull!")
+      setSuccess("success")
       setMessage("Login Successfull!")
+      setPassword('')
+      setEmail('')
+      Navigate("/dashboard")
       console.log('Loged up:', data)
     } catch (err) {
       setMessage(err.message)
       setSuccess("failed")
+      setPassword('')
     } finally {
       setLoading(false)
     }
+
   }
   return (
     <form onSubmit={handleSubmit} className='max-w-full gap-6 flex flex-col p-5 sm:p-9'>
@@ -43,9 +49,9 @@ const Auth1_Login = () => {
         </div>
         {success && (
           <div
-            className={`text-sm text-center rounded-lg py-2 px-3 ${status === "success"
-                ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
-                : "bg-red-500/10 text-red-400 border border-red-500/30"
+            className={`text-sm text-center rounded-lg py-2 px-3 ${success === "success"
+              ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+              : "bg-red-500/10 text-red-400 border border-red-500/30"
               }`}
           >
             {message}

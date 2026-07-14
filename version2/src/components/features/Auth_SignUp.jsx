@@ -240,9 +240,10 @@ const Auth1_SignUp = () => {
         <button
           type="submit"
           disabled={loading}
-          className='w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-linear-to-r from-red-500 to-red-600 text-white font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed'
+          className='w-full cursor-pointer flex items-center justify-center gap-2 py-3 rounded-lg bg-linear-to-r from-red-500 to-red-600 text-white font-semibold hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed'
         >
-          {loading ? 'Creating account...' : 'Sign Up'}
+
+          <Link to ="/dashboard" >{loading ? 'Creating account...' : 'Sign Up'} </Link>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
             <line x1="5" y1="12" x2="19" y2="12" />
             <polyline points="12 5 19 12 12 19" />
