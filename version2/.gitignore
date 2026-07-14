@@ -26,4 +26,8 @@ mid-refactors
 #Testing files
 Test.jsx
 Problem_midlevel.jsx
+
+# Environment files
 .env
+.env.*
+!.env.example
