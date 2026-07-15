@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 mid-refactors
-UI DESIGN
+# UI DESIGN
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
