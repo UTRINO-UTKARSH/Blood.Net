@@ -30,21 +30,28 @@ The goal is a single connected network instead of the fragmented, manual coordin
 ---
 
 ## 📂 Project Structure
-
+ 
 ```
-blood.net/
-├── client/                 # React frontend
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   └── hooks/
-├── server/                  # Express backend
-│   ├── routes/
-│   ├── controllers/
-│   ├── models/
-│   └── config/
-└── database/
-    └── schema.sql
+Blood.Net/
+└── version2/                        # Current active codebase
+    ├── src/                         # React frontend
+    │   ├── components/
+    │   │   ├── common/              # Navbar, LightRays, Image
+    │   │   ├── Story/               # Scroll-driven storytelling sections
+    │   │   ├── comparison/
+    │   │   ├── features/            # Auth_Login, Auth_SignUp, OurFeatures
+    │   │   ├── hero/
+    │   │   └── footer/
+    │   ├── pages/                   # Home, Auth, DashBoard
+    │   ├── hooks/                   # useTypewriter
+    │   ├── data/                    # act1.js, act2.js
+    │   └── assets/
+    ├── blood_donor_backend/         # Express + MongoDB backend
+    │   ├── controllers/
+    │   ├── models/
+    │   ├── routes/
+    │   └── lib/                     # db.js, utils.js
+    └── UI DESIGN/                   # Design mockups (Knowledge Hub, Service pages)
 ```
 
 *(Structure will evolve as the project grows — this reflects the current architecture.)*
