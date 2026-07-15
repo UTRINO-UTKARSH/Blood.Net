@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 mid-refactors
-
+UI DESIGN
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -23,6 +23,7 @@ mid-refactors
 *.njsproj
 *.sln
 *.sw?
+
 #Testing files
 Test.jsx
 Problem_midlevel.jsx
