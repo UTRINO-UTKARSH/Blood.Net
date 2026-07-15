@@ -1,78 +1,124 @@
-# Blood Donor Database Management System (Python + MySQL)
+<h1 align="center">🩸 Blood.net</h1>
 
-This project was originally developed as my **Class 12 Computer Science practical project (2023–24)** using **Python and MySQL**.  
-It implements a **menu-driven, terminal-based CRUD system** for managing blood donors, medical records, doctors, and donation banks.
+A full-stack emergency healthcare coordination platform designed to connect blood donors, patients, hospitals, blood banks, doctors, and ambulance services through a unified, real-time network.
 
-This repository primary motive is to intentionally preserved the code **without refactoring** to maintain the originality and thought process from my early programming journey.
-
-What makes this project special:
-- Built completely **from scratch**
-- No AI assistance or external frameworks
-- Logic, flow, and features were planned manually
-- Still works **unchanged after 3+ years** with modern Python & MySQL
+Blood.net is my primary portfolio project and a genuine attempt at solving a real-world problem — enabling faster, more reliable emergency blood coordination in India, launching first in Rajasthan.
 
 ---
 
-## 🧠 Project Overview
+## 📖 About the Project
 
-The system simulates a **blood donation camp management platform**, supporting:
+Blood.net connects the people and institutions involved in an emergency blood requirement in real time:
 
-- User registration (sign-up)
-- User login
-- Medical history entry & retrieval
-- Donation bank information lookup
-- Doctor listing & appointment flow
-- CLI-based interaction using menus
+- Donor registration and eligibility tracking
+- Patient/emergency blood requests
+- Hospital and blood bank inventory visibility
+- Doctor listings by city/hospital
+- Appointment and donation coordination
+- Authenticated, role-based access (donor / patient / hospital staff / admin)
 
-All operations are performed through the **command line interface**.
+The goal is a single connected network instead of the fragmented, manual coordination that currently happens over phone calls and word of mouth during medical emergencies.
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Python**
-- **MySQL**
-- `mysql-connector-python`
-- `prettytable` (for tabular CLI output)
+- **Frontend:** React, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MONGOBD(Current)/MySQL(FUTURE) 
 
 ---
 
 ## 📂 Project Structure
 
-```text
-UPDATED CODE/
-├── main_updated.py
-├── DOCTOR_FILLUP.py
-├── DONNATION_BANK_REGISTRATION.py
-└── sample_database
-    |__blood_donner_database.sql
+```
+blood.net/
+├── client/                 # React frontend
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── hooks/
+├── server/                  # Express backend
+│   ├── routes/
+│   ├── controllers/
+│   ├── models/
+│   └── config/
+└── database/
+    └── schema.sql
+```
+
+*(Structure will evolve as the project grows — this reflects the current architecture.)*
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url>
+cd blood.net
+```
+
+### 2. Set up the database
+
+```sql
+CREATE DATABASE blood_net;
+```
+
+Import the schema:
+
+```bash
+mysql -u root -p blood_net < database/schema.sql
+```
+
+### 3. Install dependencies
+
+```bash
+# Backend
+cd server
+npm install
+
+# Frontend
+cd ../client
+npm install
+```
+
+### 4. Configure environment variables
+
+Create a `.env` file in `server/` with your database credentials, JWT secret, and any other required config.
+
+### 5. Run the application
+
+```bash
+# Backend
+cd server
+npm run dev
+
+# Frontend
+cd client
+npm run dev
 ```
 
 ---
 
-## 🏃‍♂️ How to Run
+## 📌 Project Status
 
-1. Ensure you have Python and MySQL installed on your system.
+Actively in development. Currently building out core frontend flows (auth, donor registration) and the REST API backend.
 
-2. Setup MySQL
-   import the <b>sample_database</b> to your own system
-   1. First create your database, by running these commands in you <b>MySQL command line client</b>
-   ```bash
-      CREATE DATABASE YOUR_DB_NAME;
-   ```
-   then exit the command line<br>
-   then run the below code in the terminal<br>
-   <br>
-   If you are using my sample_database then Make <b>Sure that you open the terminal in the exact folder where the sample is located</b> else it will not not be copied...
-   ```bash
-   mysql -u root -p Your_database_name < blood_donner_database.sql
-   ```
-3. Install the required packages using pip:
-   ```bash
-   pip install mysql-connector-python prettytable
-   ```
-5. Run the main application:
-   ```bash
-   python main_updated.py
-   ```
-6. Follow the on-screen instructions to navigate through the menu options.
+---
+
+## 📜 Project History
+
+Blood.net is not my first attempt at this idea. It's actually the second iteration of a concept I've cared about since Class 12.
+
+### v1 — Blood Donor Database Management System (2023–24)
+
+My original take on this idea was a terminal-based **Blood Donor Management System**, built with **Python and MySQL** as my Class 12 Computer Science practical project. It was developed entirely from scratch — no frameworks, no AI assistance — and let users register as donors, log in, browse donation bank and doctor information, and simulate appointments, all through a CLI backed by a MySQL database.
+
+It taught me the fundamentals that everything since has built on: relational database design, SQL, CRUD operations, basic authentication, and modular code organization. That project is preserved as-is in its own repository as a historical snapshot of where this idea — and my programming journey — started.
+
+
+### v2 — Blood.net (Current)
+
+This repository is the modern, full-stack evolution of that original idea — rebuilt from the ground up with React, Node/Express, MySQL, and JWT auth, and scoped far beyond a CLI tool into a real multi-role platform meant to connect donors, patients, hospitals, and blood banks in real time.
