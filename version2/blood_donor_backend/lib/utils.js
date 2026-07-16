@@ -7,7 +7,7 @@ exports.generateToken = async (res,userId)=>{
             maxAge:7 * 24 * 60 * 60 * 1000,
             httpOnly: true,   //it prevents the xss attacks 
             sameSite: "lax",   
-            secure: false  
+            secure: true  
         })
 
         return token
