@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import Toast from './Toast'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 const Auth1_Login = () => {
-  const [toast, setToast] = useState(null);
   const [showPassword, setShowPassword] = useState(false)
   const { login } = useAuth();
   const [password, setPassword] = useState('');
@@ -30,11 +28,6 @@ const Auth1_Login = () => {
         throw new Error(data.message || 'Login failed')
       }
       login()
-      setToast({
-        type: "success",
-        message: "Logged in successfully!",
-      });
-      // handle success (redirect, store token, switch tab, etc.)
       setSuccess("success")
       setMessage("Login Successfull!")
       setPassword('')
@@ -46,23 +39,11 @@ const Auth1_Login = () => {
       setMessage(err.message)
       setSuccess("failed")
       setPassword('')
-      setToast({
-        type: "error",
-        message: err.message || "Invalid credentials",
-      });
       setLoading(false)
     }
 
   }
   return (
-    <>
-      {toast && (
-        <Toast
-          type={toast.type}
-          message={toast.message}
-          onClose={() => setToast(null)}
-        />
-      )}
       <form onSubmit={handleSubmit} className='max-w-full gap-6 flex flex-col p-5 sm:p-9'>
         <div className='max-w-full gap-9 sm:gap-9 flex flex-col p-5 sm:p-9'>
           <div className='flex items-center flex-col gap-0.5 text-center'>
@@ -164,7 +145,6 @@ const Auth1_Login = () => {
           </div>
         </div>
       </form >
-    </>
   )
 }
 
