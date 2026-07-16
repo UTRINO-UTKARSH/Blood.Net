@@ -40,14 +40,14 @@ const Navbar = () => {
         <ul className='hidden md:flex items-center gap-3 lg:gap-6 font-medium text-white text-sm'>
           <li><Link to="/" className='hover:text-red-600 cursor-pointer transition-colors text-sm'>Home</Link></li>
           <li className='relative group'>
-            <span className='hover:text-red-600 cursor-pointer transition-colors text-sm'>Services</span>
+            <span className='hover:text-red-600 cursor-pointer transition-colors text-sm'><Link to="/services">Services</Link></span>
             <div className='absolute top-full left-0 mt-5 bg-[#1f1f1f] backdrop-blur-md rounded-2xl border border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] min-w-48 overflow-hidden z-50 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-100'>
               <ul className='flex flex-col px-1 py-6 gap-1'>
-                <li><Link to="/knowledge/blood-types" className='px-4 py-2 text-white hover:text-red-600 hover:bg-white/20 rounded-xl transition-all text-sm'>Blood Donors</Link></li>
-                <li><Link to="/knowledge/donation-process" className='block px-4 py-2 text-white hover:text-red-600 hover:bg-white/20 rounded-xl transition-all text-sm'>Blood Banks</Link></li>
-                <li><Link to="/knowledge/eligibility" className='block px-4 py-2 text-white hover:text-red-600 hover:bg-white/20 rounded-xl transition-all text-sm'>Hospitals</Link></li>
-                <li><Link to="/knowledge/faq" className='block px-4 py-2 text-white hover:text-red-600 hover:bg-white/20 rounded-xl transition-all text-sm'>Doctors</Link></li>
-                <li><Link to="/knowledge/faq" className='block px-4 py-2 text-white hover:text-red-600 hover:bg-white/20 rounded-xl transition-all text-sm'>Ambulance Services</Link></li>
+                <li><Link to="/services/blooddonors" className='px-4 py-2 text-white hover:text-red-600 hover:bg-white/20 rounded-xl transition-all text-sm'>Blood Donors</Link></li>
+                <li><Link to="/services/bloodbanks" className='block px-4 py-2 text-white hover:text-red-600 hover:bg-white/20 rounded-xl transition-all text-sm'>Blood Banks</Link></li>
+                <li><Link to="/services/hospitals" className='block px-4 py-2 text-white hover:text-red-600 hover:bg-white/20 rounded-xl transition-all text-sm'>Hospitals</Link></li>
+                <li><Link to="/services/doctor" className='block px-4 py-2 text-white hover:text-red-600 hover:bg-white/20 rounded-xl transition-all text-sm'>Doctors</Link></li>
+                <li><Link to="/services/ambulance" className='block px-4 py-2 text-white hover:text-red-600 hover:bg-white/20 rounded-xl transition-all text-sm'>Ambulance Services</Link></li>
               </ul>
             </div>
           </li>
@@ -101,7 +101,7 @@ const Navbar = () => {
       >
         <ul className='flex flex-col font-medium text-white p-4 gap-4'>
           <li><Link to="/" className='hover:text-red-600 transition-colors text-base' onClick={() => setIsOpen(false)}>Home</Link></li>
-          <li><Link to="/" className='hover:text-red-600 transition-colors text-base' onClick={() => setIsOpen(false)}>Services</Link></li>
+          <li><Link to="/services" className='hover:text-red-600 transition-colors text-base' onClick={() => setIsOpen(false)}>Services</Link></li>
           <li className='hover:text-red-600 cursor-pointer transition-colors text-base'>Knowledge</li>
           <li className='hover:text-red-600 cursor-pointer transition-colors text-base'>About</li>
           <li className='hover:text-red-600 cursor-pointer transition-colors text-base'>Help</li>

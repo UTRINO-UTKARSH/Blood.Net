@@ -5,7 +5,13 @@ import Navbar from './components/common/Navbar'
 import Home from './pages/Home'
 import DashBoard from './pages/DashBoard'
 import Auth from './pages/Auth';
-
+import Services from './pages/Services'
+import Ambulance from './components/Services/Ambulance'
+import ProtectedRoute from './components/common/ProtectedRoute';
+import Hospital from './components/Services/Hospital';
+import Doctor from './components/Services/Doctor'
+import BloodBanks from './components/Services/BloodBanks';
+import BloodDonors from './components/Services/BloodDonors';
 const AppContent = () => {
   const sentinelRef = useRef(null);
   const pageContentRef = useRef(null);
@@ -51,6 +57,20 @@ const AppContent = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Auth />} />
           <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/ambulance" element={<Ambulance />} />
+          <Route path="/services/blooddonors" element={
+            <ProtectedRoute><BloodDonors /></ProtectedRoute>
+          } />
+          <Route path="/services/bloodbanks" element={
+            <ProtectedRoute><BloodBanks /></ProtectedRoute>
+          } />
+          <Route path="/services/hospitals" element={
+            <ProtectedRoute><Hospital /></ProtectedRoute>
+          } />
+          <Route path="/services/doctor" element={
+            <ProtectedRoute><Doctor /></ProtectedRoute>
+          } />
         </Routes>
       </div>
     </div>

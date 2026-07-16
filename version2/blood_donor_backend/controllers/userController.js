@@ -4,7 +4,19 @@ const validator = require('validator');
 const { generateToken } = require('../lib/utils.js');
 const connectDb = require('../lib/db.js');
 
+const jwt = require('jsonwebtoken');//token check(done in oder to make login and logout based decisions)
 
+exports.checkAuth = async (req, res) => {
+  const token = req.cookies.jwt;
+  if (!token) return res.status(401).json({ authenticated: false });
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    res.status(200).json({ authenticated: true, userId: decoded.userId });
+  } catch (err) {
+    res.status(401).json({ authenticated: false });
+  }
+};
 exports.signup = async (req,res)=>{
     await connectDb();
     try {

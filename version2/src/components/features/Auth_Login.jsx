@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 const Auth1_Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [password, setPassword] = useState('');
@@ -7,7 +7,8 @@ const Auth1_Login = () => {
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("");
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation()
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
@@ -23,14 +24,17 @@ const Auth1_Login = () => {
       if (!res.ok) {
         throw new Error(data.message || 'Login failed')
       }
-
+      localStorage.setItem("token", data.token)
       // handle success (redirect, store token, switch tab, etc.)
       setSuccess("success")
       setMessage("Login Successfull!")
       setPassword('')
       setEmail('')
-      Navigate("/dashboard")
+      navigate("/dashboard")
       console.log('Loged up:', data)
+
+      const from = location.state?.from?.pathname || "/dashboard"
+      navigate(from, { replace: true })
     } catch (err) {
       setMessage(err.message)
       setSuccess("failed")
