@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../contexts/AuthContext';
+import { Navigate } from 'react-router-dom';
 const Navbar = () => {
   const [scrolled,setscrolled] = useState(false);
-
+   const { isAuthenticated, loading, logout } = useAuth();
+   const navigate = useNavigate();
+   const handelLogout = async () => {
+     await logout();
+     navigate("/")
+   }
   useEffect(()=>{
     let ticking = false
     const handelscroll = ()=>{
@@ -78,9 +85,12 @@ const Navbar = () => {
           </button>
 
           {/* Login */}
-          <button className='bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 active:scale-95 transition-all shadow-md text-[10px] px-2.5 py-1.5 sm:text-xs sm:px-3 sm:py-2 md:text-sm md:px-4 md:py-2 leading-tight'>
-            <Link to="/login">Login</Link>
-          </button>
+            
+             {loading ? null : isAuthenticated ? (
+        <button className='bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 active:scale-95 transition-all shadow-md text-[10px] px-2.5 py-1.5 sm:text-xs sm:px-3 sm:py-2 md:text-sm md:px-4 md:py-2 leading-tight' onClick={handelLogout}>Logout</button>
+      ) : (
+        <button className='bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 active:scale-95 transition-all shadow-md text-[10px] px-2.5 py-1.5 sm:text-xs sm:px-3 sm:py-2 md:text-sm md:px-4 md:py-2 leading-tight' onClick={() => navigate("/login")}>Login</button>
+      )}
 
           {/* Hamburger — mobile only */}
           <button

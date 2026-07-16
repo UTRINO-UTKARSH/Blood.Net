@@ -2,7 +2,7 @@ import React from 'react'
 
 const Hospital = () => {
   return (
-    <div className='bg-black text-red-500 text-8xl'>Hospital</div>
+    <div className='bg-black h-screen text-red-500 text-8xl'>Hospital</div>
   )
 }
 

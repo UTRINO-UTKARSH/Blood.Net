@@ -6,6 +6,20 @@ const connectDb = require('../lib/db.js');
 
 const jwt = require('jsonwebtoken');//token check(done in oder to make login and logout based decisions)
 
+exports.logout = (req, res) => {
+  try {
+    res.clearCookie("jwt", {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: true,
+    });
+    return res.status(200).json({ message: "Logged out successfully!" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
 exports.checkAuth = async (req, res) => {
   const token = req.cookies.jwt;
   if (!token) return res.status(401).json({ authenticated: false });
@@ -13,7 +27,7 @@ exports.checkAuth = async (req, res) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     res.status(200).json({ authenticated: true, userId: decoded.userId });
-  } catch (err) {
+  } catch {
     res.status(401).json({ authenticated: false });
   }
 };
@@ -43,9 +57,6 @@ exports.signup = async (req,res)=>{
         generateToken(res,newuser._id);
 
         return res.status(200).json({message:"Signed Up succesfully!"});
-        
-
-        // return res.status(200).json({message:"Signed Up succesfully"},{name,email,password})
     } catch (error) {
         console.log(error);
     }

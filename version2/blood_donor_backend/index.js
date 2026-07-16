@@ -17,9 +17,11 @@ app.use(
 
 app.use(express.json());
 
-app.use("/auth", userRoute);
 app.use(cookieParser());
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+
+app.use("/auth", userRoute);
+
 app.get("/ping", (req, res) => {
   res.send("pong");
 });

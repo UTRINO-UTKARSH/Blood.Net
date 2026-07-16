@@ -1,11 +1,11 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext,useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
-export function AuthProvider({ children }) {
+function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true); 
-
+  const [loading, setLoading] = useState(true);
+  
   const checkAuth = async () => {
     try {
       const res = await fetch("http://localhost:3000/auth/check", {
@@ -42,5 +42,5 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-
 export const useAuth = () => useContext(AuthContext);
+export default AuthProvider;
