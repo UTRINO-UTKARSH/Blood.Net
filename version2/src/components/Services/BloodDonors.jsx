@@ -33,6 +33,7 @@ const BloodDonors = () => {
         </div>
         <div className='border flex flex-col gap-3 border-zinc-500 rounded-xl p-4 my-12'>
           <span className='text-white text-3xl font-bold p-3'>How It Works</span>
+          {/* Work Form here */}
           <div className='flex'>
             <div className='flex flex-col gap-3'>
               <div className='flex items-center justify-center border rounded-full w-12 h-12 border-gray-700/50 bg-red-400/10'>
