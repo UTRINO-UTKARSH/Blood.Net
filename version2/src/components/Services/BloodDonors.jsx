@@ -31,8 +31,22 @@ const BloodDonors = () => {
           <span className='text-white text-6xl font-bold'>Blood Donor</span>
           <span className='text-zinc-400 text-3xl'>Connect with verified donors when every second counts</span>
         </div>
-        <div className='border border-zinc-500 rounded-xl p-4'>
-            <span className='text-white text-3xl'>How It Works</span>
+        <div className='border flex flex-col gap-3 border-zinc-500 rounded-xl p-4 my-12'>
+          <span className='text-white text-3xl font-bold p-3'>How It Works</span>
+          <div className='flex'>
+            <div className='flex flex-col gap-3'>
+              <div className='flex items-center justify-center border rounded-full w-12 h-12 border-gray-700/50 bg-red-400/10'>
+                <span className='text-red-600 text-2xl'>1</span>
+              </div>
+              <div className='flex flex-col '>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="text-white">
+                  <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.8" />
+                  <path d="M4 21C4 16.6 7.6 14 12 14C16.4 14 20 16.6 20 21" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                </svg>
+              </div>
+              <span className='text-white'>Create profile</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
