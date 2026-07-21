@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const Auth1_SignUp = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-
+  const [msg , setMsg] = useState('');
   const [name, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -37,6 +37,7 @@ const Auth1_SignUp = () => {
 
       // handle success (redirect, store token, switch tab, etc.)
       console.log('Signed up:', data)
+      setMsg("Signed Up, Please Login To proceed")
     } catch (err) {
       setError(err.message)
     } finally {
@@ -49,6 +50,7 @@ const Auth1_SignUp = () => {
       <div className='flex items-center flex-col gap-0.5 text-center'>
         <span className='text-2xl sm:text-3xl'>Create your account</span>
         <span className='text-zinc-400 text-sm'>Join the network of life-savers today.</span>
+        
       </div>
 
       {error && (
@@ -250,6 +252,7 @@ const Auth1_SignUp = () => {
           </svg>
         </button>
       </div>
+      <span className={`text-red-400 text-lg ${msg ? '':'hidden'}`}>{msg}</span>
     </form>
   )
 }
