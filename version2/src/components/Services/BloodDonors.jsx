@@ -5,7 +5,7 @@ const BloodDonors = () => {
   return (
    
     <div className="relative min-h-screen">
-      <div className="flex z-10 relative gap-4 flex-col justify-center items-center my-16 sm:my-24 lg:my-30 px-4">
+      <div className="flex z-10 showup relative gap-4 flex-col justify-center items-center my-16 sm:my-24 lg:my-30 px-4">
         <svg
           width="70"
           height="70"

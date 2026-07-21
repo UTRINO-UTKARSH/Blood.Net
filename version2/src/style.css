@@ -157,7 +157,7 @@ html {
     opacity: 1;
     transform: translateX(0);
   }
-}   
+}       
 /* RESPONSIVE MEDIA QUERIES */
 @media (max-width: 640px) {
     .img {
