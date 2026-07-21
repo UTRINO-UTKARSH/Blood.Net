@@ -2,25 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { HeartPulse, ArrowRight } from "lucide-react";
 import LightRays from "../components/common/LightRays";
-/* ============================================================
-   COLOR NOTE
-   Your brand colors (#090B12, #FF2D2D, etc.) aren't in
-   Tailwind's default palette, and there's no JIT compiler here,
-   so we use the closest built-in shades instead:
-     background -> neutral-950
-     card bg    -> neutral-900
-     accent red -> red-500
-     muted text -> neutral-400 / neutral-500
-   In your real project, add the exact hex codes to
-   tailwind.config.js so you can use bg-[#090B12] etc.
-   ============================================================ */
-
-/* ============================================================
-   ICONS
-   Instead of writing <svg width... height... viewBox...> five
-   times, we make ONE small wrapper (IconBase) that all icons
-   share. Each icon then only has to describe its own shape.
-   ============================================================ */
 function IconBase({ size, className, children }) {
   return (
     <svg width={size} height={size} viewBox="0 0 48 48" fill="none" className={className}>
@@ -106,17 +87,6 @@ function IconBookRibbon({ size = 40, className = "text-white" }) {
   );
 }
 
-/* ============================================================
-   SCROLL-REVEAL ANIMATION
-   Tailwind alone can't detect "has this scrolled into view yet."
-   So we still need a tiny bit of JS: IntersectionObserver watches
-   an element, and the moment it enters the screen, we flip
-   `visible` to true. Tailwind then handles the actual fade/rise
-   animation using the "visible" flag.
-
-   useReveal() = the watching logic
-   <Reveal>    = wraps content and applies the fade/rise classes
-   ============================================================ */
 function useReveal() {
   const elementRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -129,10 +99,10 @@ function useReveal() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.unobserve(element); // only need to trigger once
+          observer.unobserve(element);
         }
       },
-      { threshold: 0.15 } // fire when 15% of the element is visible
+      { threshold: 0.15 } 
     );
 
     observer.observe(element);
@@ -157,11 +127,6 @@ function Reveal({ children, delayMs = 0 }) {
   );
 }
 
-/* ============================================================
-   CONTENT DATA
-   Keeping this separate from the JSX below makes it easy to
-   add/remove/reorder a service without touching any layout code.
-   ============================================================ */
 const services = [
   { icon: IconDrop, title: "Blood Donors", desc: "Find verified blood donors near you quickly and connect instantly.", path: "/services/blooddonors" },
   { icon: IconHospitalBuilding, title: "Blood Banks", desc: "Locate nearby blood banks, check availability, and request with confidence.", path: "/services/bloodbanks" },
@@ -171,12 +136,6 @@ const services = [
   { icon: IconBookRibbon, title: "Knowledge Hub", desc: "Access health information, guides, and resources to stay informed.", path: "/knowledge-hub" },
 ];
 
-/* ============================================================
-   SHARED STYLE STRINGS
-   Pulling the long class strings out into named constants means
-   the JSX below reads like plain English instead of a wall of
-   Tailwind utility classes.
-   ============================================================ */
 const cardStyles =
   "group block h-full rounded-2xl border border-white/10 bg-neutral-900 p-7 sm:p-9 " +
   "transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-red-500/40 " +
@@ -190,9 +149,6 @@ const secondaryButtonStyles =
   "flex w-full sm:w-auto items-center justify-center gap-1.5 rounded-[10px] border border-red-500/50 " +
   "px-6 py-3.5 text-[15px] font-semibold text-red-500";
 
-/* ============================================================
-   PAGE SECTIONS
-   ============================================================ */
 function Hero() {
   return (
     <section className="relative overflow-hidden text-center px-5 pt-24 pb-14 sm:px-6 sm:pt-28 sm:pb-16 lg:pt-36 lg:pb-24">
@@ -243,7 +199,6 @@ function ServicesGrid() {
     <section className="px-4 sm:px-6">
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-3.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-5">
         {services.map((service, index) => (
-          // Stagger each card's entrance by 70ms so they don't all pop in at once
           <ServiceCard key={service.title} service={service} delayMs={index * 70} />
         ))}
       </div>
@@ -278,9 +233,6 @@ function CallToAction() {
   );
 }
 
-/* ============================================================
-   PAGE ROOT
-   ============================================================ */
 export default function ServicesLandingPage() {
   return (
     <div className=" min-h-screen">

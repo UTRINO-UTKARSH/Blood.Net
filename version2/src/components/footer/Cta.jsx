@@ -49,7 +49,7 @@ const Cta = () => {
         className='flex transition-all hover:scale-105 md:hover:scale-112 items-center hover:shadow-blue-600/60 shadow-blue-600 hover:shadow-xl justify-center flex-col gap-3 p-5 sm:p-6 md:p-8 rounded-xl bg-white/5 backdrop-blur-sm'>
           <span className='text-xl sm:text-2xl md:text-3xl text-center'>Want to be Someone's Lifeline?</span>
           <span className='text-sm sm:text-base md:text-lg text-center'>Join as a donor and make a real difference.</span>
-         <Link to="/login"> <button className='px-4 sm:px-5 border text-lg sm:text-xl md:text-3xl transition-all hover:bg-white hover:text-black hover:scale-105 md:hover:scale-110 hover:rounded-4xl my-3 sm:my-4 py-1.5 sm:py-2'>Donate now</button> </Link>
+         <Link to="/services/blooddonors"> <button className='px-4 sm:px-5 border text-lg sm:text-xl md:text-3xl transition-all hover:bg-white hover:text-black hover:scale-105 md:hover:scale-110 hover:rounded-4xl my-3 sm:my-4 py-1.5 sm:py-2'>Donate now</button> </Link>
         </div>
       </div>
     </div>
