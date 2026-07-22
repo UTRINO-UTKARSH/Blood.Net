@@ -268,7 +268,9 @@ export default function BloodDonorsPage() {
           </p>
 
           <div className="mt-6 flex w-full  flex-col gap-3 sm:w-auto sm:flex-row">
+            {/* donor dashboard route */}
             <button className={`cursor-pointer hover:scale-105 transition-all duration-300 ${redButton}`}>Register as Donor</button>
+            {/* user dashboard--> search donor (location) */}
             <button className={`cursor-pointer hover:scale-105 transition-all duration-300 ${outlineButton}`}>Find Donors</button>
           </div>
         </div>

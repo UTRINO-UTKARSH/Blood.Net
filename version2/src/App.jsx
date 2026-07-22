@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/common/Navbar'
 import Home from './pages/Home'
-import DashBoard from './pages/DashBoard'
+import DashBoard from './pages/DashBoard.Routes'
 import Auth from './pages/Auth';
 import Services from './pages/Services'
 import Ambulance from './components/Services/Ambulance'
@@ -71,6 +71,7 @@ const AppContent = () => {
           <Route path="/services/doctor" element={
             <ProtectedRoute><Doctor /></ProtectedRoute>
           } />
+          <Route path='/test' element={<DashBoard />}></Route>
         </Routes>
       </div>
     </div>
