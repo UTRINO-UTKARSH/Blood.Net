@@ -1,5 +1,46 @@
 import React from "react";
+import { useEffect, useRef, useState } from "react";
 // need's huge improvement and spacing fix{by-utkarsh}
+// sentinal div adding
+function useReveal() {
+  const elementRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const element = elementRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(element);
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  return [elementRef, isVisible];
+}
+function Reveal({ children, delayMs = 0 }) {
+  const [ref, isVisible] = useReveal();
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      style={{ transitionDelay: `${delayMs}ms` }}
+    >
+      {children}
+    </div>
+  );
+}
+//sentinal ends
 function DropIcon({ size = 24, className = "" }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className}>
@@ -217,9 +258,9 @@ const outlineButton =
 
 export default function BloodDonorsPage() {
   return (
-    <div className="min-h-screen overflow-x-hidden showup bg-[#0A0B10] px-3 py-4 text-white sm:px-8 sm:py-8">
-     
-      <section className="flex flex-col items-center py-6 sm:flex-row sm:items-center sm:justify-evenly">
+    <div className="min-h-screen overflow-x-hidden  bg-[#0A0B10] px-3 py-4 text-white sm:px-8 sm:py-8">
+
+      <section className="flex showup flex-col items-center py-6 sm:flex-row sm:items-center sm:justify-evenly">
         <div className="max-w-lg">
           <h1 className="text-4xl font-extrabold sm:text-6xl">Blood Donors</h1>
           <p className="mt-3 text-3xl text-neutral-400">
@@ -234,132 +275,150 @@ export default function BloodDonorsPage() {
 
         <HandDropHero />
       </section>
+      <Reveal delayMs={500}>
+        <section className="mt-10">
+          <h2 className="mb-5 text-center justify-center text-3xl hover:scale-105 transition-all duration-300 font-bold">How It Works</h2>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Reveal delayMs={400}>
+              {/* step 1 */}
+              <div className={`flex flex-1 items-center gap-3 ${cardBox}`}>
 
-      <section className="mt-10">
-        <h2 className="mb-5 text-center justify-center text-3xl hover:scale-105 transition-all duration-300 font-bold">How It Works</h2>
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-500/20 text-sm font-bold text-red-500">
+                  1
+                </div>
+                <div>
+                  <h3 className="font-bold">Create Profile</h3>
+                  <p className="mt-1 text-sm text-neutral-400">Sign up and complete your donor profile.</p>
+                </div>
+              </div>
+            </Reveal>
 
-        <div className="flex flex-col gap-4 sm:flex-row">
-          {/* step 1 */}
-          <div className={`flex flex-1 items-center gap-3 ${cardBox}`}>
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-500/20 text-sm font-bold text-red-500">
-              1
+            {/* step 2 */}
+            <Reveal delayMs={400} >
+              <div className={`flex flex-1 items-center gap-3 ${cardBox}`}>
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-500/20 text-sm font-bold text-red-500">
+                  2
+                </div>
+                <div>
+                  <h3 className="font-bold">Get Matched</h3>
+                  <p className="mt-1 text-sm text-neutral-400">We match you with recipients near you.</p>
+                </div>
+              </div>
+            </Reveal>
+            {/* step 3 */}
+            <Reveal delayMs={400}>
+              <div className={`flex flex-1 items-center gap-3 ${cardBox}`}>
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-500/20 text-sm font-bold text-red-500">
+                  3
+                </div>
+                <div>
+                  <h3 className="font-bold">Save Lives</h3>
+                  <p className="mt-1 text-sm text-neutral-400">Donate blood and make a real impact.</p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      </Reveal>
+      <Reveal delayMs={100}>
+        <section className="mt-10">
+          <Reveal>
+            <h2 className="mb-5 text-center text-3xl hover:scale-105 transition-all duration-300 font-bold">Features</h2>
+          </Reveal>
+          <Reveal>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+              <div className={cardBox}>
+                <HeartbeatIcon className="text-red-500" />
+                <h3 className="mt-3 font-bold">Real-time Availability</h3>
+                <p className="mt-1 text-sm text-neutral-400">
+                  Donors can update availability in real-time for quick response.
+                </p>
+              </div>
+
+
+              <div className={cardBox}>
+                <ShieldIcon className="text-red-500" />
+                <h3 className="mt-3 font-bold">Verified Donors</h3>
+                <p className="mt-1 text-sm text-neutral-400">
+                  All donors are verified for safety and reliability.
+                </p>
+              </div>
+
+
+              <div className={cardBox}>
+                <PinIcon className="text-red-500" />
+                <h3 className="mt-3 font-bold">Location-Based Matching</h3>
+                <p className="mt-1 text-sm text-neutral-400">
+                  Find nearby donors based on your exact location.
+                </p>
+              </div>
+
+              <div className={cardBox}>
+                <BellIcon className="text-red-500" />
+                <h3 className="mt-3 font-bold">Instant Notifications</h3>
+                <p className="mt-1 text-sm text-neutral-400">
+                  Get notified instantly when blood is needed.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </section>
+      </Reveal>
+      <Reveal delayMs={100}>
+        <section className="mt-10">
+          <Reveal>
+            <h2 className="mb-5 text-center text-3xl hover:scale-105 transition-all duration-300 font-bold">Why Register as a Donor?</h2>
+          </Reveal>
+          <Reveal>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <div className={cardBox}>
+                <HeartbeatIcon className="text-red-500" />
+                <div className="mt-3 text-2xl font-extrabold">3M+</div>
+                <h3 className="mt-1 font-bold">Lives Impacted</h3>
+                <p className="mt-1 text-sm text-neutral-400">Your donation can save up to 3 lives.</p>
+              </div>
+
+              <div className={cardBox}>
+                <DropIcon className="text-red-500" />
+                <div className="mt-3 text-2xl font-extrabold">90s</div>
+                <h3 className="mt-1 font-bold">Every 90 Seconds</h3>
+                <p className="mt-1 text-sm text-neutral-400">Someone needs blood every 90 seconds.</p>
+              </div>
+
+              <div className={cardBox}>
+                <HeartIcon className="text-red-500" />
+                <div className="mt-3 text-2xl font-extrabold">100%</div>
+                <h3 className="mt-1 font-bold">Pure Impact</h3>
+                <p className="mt-1 text-sm text-neutral-400">
+                  Every drop donated goes directly to those in need.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </section>
+      </Reveal>
+      <Reveal delayMs={100}>
+
+        <section className={`mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between ${cardBox}`}>
+          <div className="flex items-center gap-4">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-red-500/40">
+              <PersonIcon size={26} className="text-red-500" />
             </div>
             <div>
-              <h3 className="font-bold">Create Profile</h3>
-              <p className="mt-1 text-sm text-neutral-400">Sign up and complete your donor profile.</p>
+              <h3 className="text-lg font-bold">Ready to Save Lives?</h3>
+              <p className="mt-1 text-sm text-neutral-400">
+                Join thousands of verified donors and be the reason someone gets a second chance at life.
+              </p>
             </div>
           </div>
 
-          {/* step 2 */}
-          <div className={`flex flex-1 items-center gap-3 ${cardBox}`}>
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-500/20 text-sm font-bold text-red-500">
-              2
-            </div>
-            <div>
-              <h3 className="font-bold">Get Matched</h3>
-              <p className="mt-1 text-sm text-neutral-400">We match you with recipients near you.</p>
-            </div>
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <button className={`cursor-pointer ${redButton}`}>Register as Donor</button>
+            <button className={`cursor-pointer ${outlineButton}`}>Find Donors</button>
           </div>
-
-          {/* step 3 */}
-          <div className={`flex flex-1 items-center gap-3 ${cardBox}`}>
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-500/20 text-sm font-bold text-red-500">
-              3
-            </div>
-            <div>
-              <h3 className="font-bold">Save Lives</h3>
-              <p className="mt-1 text-sm text-neutral-400">Donate blood and make a real impact.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mt-10">
-        <h2 className="mb-5 text-center text-3xl hover:scale-105 transition-all duration-300 font-bold">Features</h2>
-
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div className={cardBox}>
-            <HeartbeatIcon className="text-red-500" />
-            <h3 className="mt-3 font-bold">Real-time Availability</h3>
-            <p className="mt-1 text-sm text-neutral-400">
-              Donors can update availability in real-time for quick response.
-            </p>
-          </div>
-
-          <div className={cardBox}>
-            <ShieldIcon className="text-red-500" />
-            <h3 className="mt-3 font-bold">Verified Donors</h3>
-            <p className="mt-1 text-sm text-neutral-400">
-              All donors are verified for safety and reliability.
-            </p>
-          </div>
-
-          <div className={cardBox}>
-            <PinIcon className="text-red-500" />
-            <h3 className="mt-3 font-bold">Location-Based Matching</h3>
-            <p className="mt-1 text-sm text-neutral-400">
-              Find nearby donors based on your exact location.
-            </p>
-          </div>
-
-          <div className={cardBox}>
-            <BellIcon className="text-red-500" />
-            <h3 className="mt-3 font-bold">Instant Notifications</h3>
-            <p className="mt-1 text-sm text-neutral-400">
-              Get notified instantly when blood is needed.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="mt-10">
-        <h2 className="mb-5 text-center text-3xl hover:scale-105 transition-all duration-300 font-bold">Why Register as a Donor?</h2>
-
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <div className={cardBox}>
-            <HeartbeatIcon className="text-red-500" />
-            <div className="mt-3 text-2xl font-extrabold">3M+</div>
-            <h3 className="mt-1 font-bold">Lives Impacted</h3>
-            <p className="mt-1 text-sm text-neutral-400">Your donation can save up to 3 lives.</p>
-          </div>
-
-          <div className={cardBox}>
-            <DropIcon className="text-red-500" />
-            <div className="mt-3 text-2xl font-extrabold">90s</div>
-            <h3 className="mt-1 font-bold">Every 90 Seconds</h3>
-            <p className="mt-1 text-sm text-neutral-400">Someone needs blood every 90 seconds.</p>
-          </div>
-
-          <div className={cardBox}>
-            <HeartIcon className="text-red-500" />
-            <div className="mt-3 text-2xl font-extrabold">100%</div>
-            <h3 className="mt-1 font-bold">Pure Impact</h3>
-            <p className="mt-1 text-sm text-neutral-400">
-              Every drop donated goes directly to those in need.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ FOOTER CTA ============ */}
-      <section className={`mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between ${cardBox}`}>
-        <div className="flex items-center gap-4">
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-red-500/40">
-            <PersonIcon size={26} className="text-red-500" />
-          </div>
-          <div>
-            <h3 className="text-lg font-bold">Ready to Save Lives?</h3>
-            <p className="mt-1 text-sm text-neutral-400">
-              Join thousands of verified donors and be the reason someone gets a second chance at life.
-            </p>
-          </div>
-        </div>
-
-        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-          <button className={redButton}>Register as Donor</button>
-          <button className={outlineButton}>Find Donors</button>
-        </div>
-      </section>
+        </section>
+      </Reveal>
     </div>
   );
 }
