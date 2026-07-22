@@ -1,0 +1,2 @@
+Attempt 2:
+Trying to fetch the category after the user get login , by explicitly demanding the category in body.stringify not work

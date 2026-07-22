@@ -3,8 +3,9 @@ const { signup, login, checkAuth, logout } = require('../controllers/userControl
 
 const router = express.Router();
 
-router.post('/signup',signup);
-router.post('/login',login)
+router.post('/signup', signup);
+router.post('/login', login)
 router.get('/check', checkAuth)
-router.post('/logout',logout)
+router.post('/logout', logout)
+// router.get('/me', provideInfo)
 module.exports = router;

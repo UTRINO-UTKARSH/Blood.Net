@@ -94,3 +94,35 @@ exports.login = async (req, res) => {
     console.log(error);
   }
 }
+// exports.provideInfo = async (req, res) => {
+//   await connectDb();
+
+//   try {
+//     const token = req.cookies.jwt;
+
+//     if (!token) {
+//       return res.status(401).json({ message: "Unauthorized" });
+//     }
+
+//     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+//     const findedUser = await user
+//       .findedUser(decoded.userId)
+//       .select("name email category");
+
+//     if (!findedUser) {
+//       return res.status(404).json({ message: "User not found" });
+//     }
+
+//     return res.status(200).json({
+//       success: true,
+//       name: findedUser.name,
+//       email: findedUser.email,
+//       category: findedUser.category,
+//     });
+
+//   } catch (err) {
+//     console.log(err);
+//     return res.status(500).json({ message: err.message });
+//   }
+// };

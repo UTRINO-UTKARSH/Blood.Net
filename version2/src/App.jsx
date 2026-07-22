@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/common/Navbar'
 import Home from './pages/Home'
-import DashBoard from './pages/DashBoard.Routes'
+// import DashBoard from './pages/DashBoard'
 import Auth from './pages/Auth';
 import Services from './pages/Services'
 import Ambulance from './components/Services/Ambulance'
@@ -56,7 +56,7 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Auth />} />
-          <Route path="/dashboard" element={<DashBoard />} />
+          {/* <Route path="/dashboard" element={<DashBoard />} /> */}
           <Route path="/services" element={<Services />} />
           <Route path="/services/ambulance" element={<Ambulance />} />
           <Route path="/services/blooddonors" element={
@@ -71,7 +71,7 @@ const AppContent = () => {
           <Route path="/services/doctor" element={
             <ProtectedRoute><Doctor /></ProtectedRoute>
           } />
-          <Route path='/test' element={<DashBoard />}></Route>
+          {/* <Route path='/test' element={<DashBoard />}></Route> */}
         </Routes>
       </div>
     </div>
