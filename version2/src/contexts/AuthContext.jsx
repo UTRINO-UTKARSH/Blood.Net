@@ -5,7 +5,6 @@ const AuthContext = createContext();
 function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
-  
   const checkAuth = async () => {
     try {
       const res = await fetch("http://localhost:3000/auth/check", {
