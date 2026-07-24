@@ -1,2 +1,8 @@
 Attempt 2:
 Trying to fetch the category after the user get login , by explicitly demanding the category in body.stringify not work
+
+Attempt 3:
+success on category based login
+
+Attempt 4:
+fix routes and add lazy loading wherever needed
