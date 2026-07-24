@@ -1,8 +1,14 @@
 import React from 'react'
-
+import  Sidebar from '../components/common/Sidebar'
+import { Outlet } from 'react-router-dom'
 const User = () => {
   return (
-    <div className='bg-black tect-red-400 h-screen' >Patient</div>
+    <div className='flex bg-[#090B12] min-h-screen'>
+      <Sidebar />
+      <main className='ml-64 flex-1 p-8 text-white'>
+        <Outlet /> {/* renders whichever nested route matches */}
+      </main>
+    </div>
   )
 }
 

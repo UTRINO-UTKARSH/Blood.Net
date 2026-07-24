@@ -71,7 +71,7 @@ const AppContent = () => {
           <Route path="/services/doctor" element={
             <ProtectedRoute><Doctor /></ProtectedRoute>
           } />
-          {/* <Route path='/test' element={<DashBoard />}></Route> */}
+          
         </Routes>
       </div>
     </div>
