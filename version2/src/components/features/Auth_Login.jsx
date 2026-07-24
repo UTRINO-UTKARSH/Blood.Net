@@ -186,7 +186,6 @@ const Auth1_Login = () => {
         <div>
           <button
             disabled={loading}
-
             type="submit"
             className='w-full cursor-pointer flex  items-center justify-center gap-2 py-3 rounded-lg bg-linear-to-r from-red-500 to-red-600 text-white font-semibold hover:opacity-90 transition-opacity'
           >

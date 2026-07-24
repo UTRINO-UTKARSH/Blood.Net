@@ -79,17 +79,17 @@ const Navbar = () => {
 
           {/* Emergency help — shrinks label on small screens */}
           <button className='bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 active:scale-95 transition-all shadow-md text-[10px] px-2 py-1.5 sm:text-xs sm:px-3 sm:py-2 md:text-sm md:px-4 md:py-2 leading-tight'>
-            <span className='sm:hidden'>SOS</span>
-            <span className='hidden sm:inline md:hidden'>Help</span>
-            <span className='hidden md:inline'>Emergency Help</span>
+            <span className='cursor-pointer sm:hidden'>SOS</span>
+            <span className='hidden cursor-pointer sm:inline md:hidden'>Help</span>
+            <span className='hidden cursor-pointer md:inline'>Emergency Help</span>
           </button>
 
           {/* Login */}
             
              {loading ? null : isAuthenticated ? (
-        <button className='bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 active:scale-95 transition-all shadow-md text-[10px] px-2.5 py-1.5 sm:text-xs sm:px-3 sm:py-2 md:text-sm md:px-4 md:py-2 leading-tight' onClick={handelLogout}>Logout</button>
+        <button className='bg-red-600 cursor-pointer text-white rounded-full font-semibold hover:bg-red-700 active:scale-95 transition-all shadow-md text-[10px] px-2.5 py-1.5 sm:text-xs sm:px-3 sm:py-2 md:text-sm md:px-4 md:py-2 leading-tight' onClick={handelLogout}>Logout</button>
       ) : (
-        <button className='bg-red-600 text-white rounded-full font-semibold hover:bg-red-700 active:scale-95 transition-all shadow-md text-[10px] px-2.5 py-1.5 sm:text-xs sm:px-3 sm:py-2 md:text-sm md:px-4 md:py-2 leading-tight' onClick={() => navigate("/login")}>Login</button>
+        <button className='bg-red-600 cursor-pointer text-white rounded-full font-semibold hover:bg-red-700 active:scale-95 transition-all shadow-md text-[10px] px-2.5 py-1.5 sm:text-xs sm:px-3 sm:py-2 md:text-sm md:px-4 md:py-2 leading-tight' onClick={() => navigate("/login")}>Login</button>
       )}
 
           {/* Hamburger — mobile only */}

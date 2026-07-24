@@ -1,25 +1,17 @@
-// import React, { useState,useEffect } from 'react'
+import React from 'react'
+import { useAuth } from '../contexts/AuthContext'
+import {getCategoryLabel} from '../data/category'
+const Dashboard = () => {
+  const { user, loading } = useAuth();
 
-// const Dashboard = () => {
-//     const [category, setCategory] = useState("");
+  if (loading) {
+    return <div className='bg-black h-screen text-white text-7xl flex items-center justify-center '>Loading...</div>;
+  }
 
-//     useEffect(() => {
-//         const getUser = async ()=> {
-//             try {
-//                 const res = await fetch("http://localhost:3000/auth/providerInfo", {
-//                     credentials: "include",
-//                 });
+  if (!user) return <div>Not logged in</div>;
 
-//                 const data = await res.json();
 
-//                 console.log(data); // Check response
+  return <div className='text-red-400 bg-black test-9xl'>Category:{getCategoryLabel(user.category)} name:{user.name}</div>;
+};
 
-//                 setCategory(data.category);
-//             } catch (err) {
-//                 console.log(err);
-//             }
-//         }})
-//   return <div className='test-red test-9xl'>Category: {category}</div>;
-// };
-
-// export default Dashboard;
+export default Dashboard;

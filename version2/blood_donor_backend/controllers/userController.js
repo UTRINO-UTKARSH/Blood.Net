@@ -66,8 +66,8 @@ exports.signup = async (req, res) => {
 exports.login = async (req, res) => {
   await connectDb();
   try {
-    const { email, password } = req.body;
-    if (!email || !password) {
+    const { email, password,category } = req.body;
+    if (!email || !password || !category) {
       return res.status(400).json({ message: "All fields are mandatory!" });
     }
     if (!validator.isEmail(email)) {
@@ -75,7 +75,7 @@ exports.login = async (req, res) => {
     }
 
 
-    const findedUser = await user.findOne({ email: email });
+    const findedUser = await user.findOne({ email: email ,category: category});
     if (!findedUser) {
       return res.status(400).json({ message: "Invalid Credentials" })
     }
@@ -94,35 +94,35 @@ exports.login = async (req, res) => {
     console.log(error);
   }
 }
-// exports.provideInfo = async (req, res) => {
-//   await connectDb();
+exports.provideInfo = async (req, res) => {
+  await connectDb();
 
-//   try {
-//     const token = req.cookies.jwt;
+  try {
+    const token = req.cookies.jwt;
 
-//     if (!token) {
-//       return res.status(401).json({ message: "Unauthorized" });
-//     }
+    if (!token) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
 
-//     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-//     const findedUser = await user
-//       .findedUser(decoded.userId)
-//       .select("name email category");
+    const findedUser = await user
+      .findById(decoded.userId)
+      .select("name email category");
 
-//     if (!findedUser) {
-//       return res.status(404).json({ message: "User not found" });
-//     }
+    if (!findedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-//     return res.status(200).json({
-//       success: true,
-//       name: findedUser.name,
-//       email: findedUser.email,
-//       category: findedUser.category,
-//     });
+    return res.status(200).json({
+      success: true,
+      name: findedUser.name,
+      email: findedUser.email,
+      category: findedUser.category,
+    });
 
-//   } catch (err) {
-//     console.log(err);
-//     return res.status(500).json({ message: err.message });
-//   }
-// };
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ message: err.message });
+  }
+};

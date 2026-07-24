@@ -1,18 +1,30 @@
-import { createContext,useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
-  const checkAuth = async () => {
+  const [user, setUser] = useState(null);
+
+  const fetchUser = async () => {
     try {
-      const res = await fetch("http://localhost:3000/auth/check", {
+      const res = await fetch("http://localhost:3000/auth/me", {
+        method: "GET",
         credentials: "include",
       });
+
+      if (!res.ok) {
+        setUser(null);
+        setIsAuthenticated(false);
+        return;
+      }
+
       const data = await res.json();
-      setIsAuthenticated(data.authenticated);
+      setUser(data);
+      setIsAuthenticated(true);
     } catch {
+      setUser(null);
       setIsAuthenticated(false);
     } finally {
       setLoading(false);
@@ -20,26 +32,34 @@ function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    checkAuth();
+    fetchUser();
   }, []);
 
-  const login = () => {
-    setIsAuthenticated(true);
+  const login = async () => {
+    // After a successful login API call elsewhere, re-fetch the user
+    await fetchUser();
   };
 
   const logout = async () => {
-    await fetch("http://localhost:3000/auth/logout", {
-      method: "POST",
-      credentials: "include",
-    });
-    setIsAuthenticated(false);
+    try {
+      await fetch("http://localhost:3000/auth/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+    } finally {
+      setUser(null);
+      setIsAuthenticated(false);
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, loading, login, logout }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, loading, user, login, logout, fetchUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
 }
+
 export const useAuth = () => useContext(AuthContext);
 export default AuthProvider;
