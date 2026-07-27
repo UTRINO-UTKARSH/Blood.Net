@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { buildApiUrl } from '../apiConfig';
 
 const AuthContext = createContext();
 
@@ -10,7 +9,7 @@ function AuthProvider({ children }) {
 
   const fetchUser = async () => {
     try {
-      const res = await fetch(buildApiUrl('/auth/me'), {
+      const res = await fetch("http://localhost:3000/auth/me", {
         method: "GET",
         credentials: "include",
       });
@@ -43,7 +42,7 @@ function AuthProvider({ children }) {
 
   const logout = async () => {
     try {
-      await fetch(buildApiUrl('/auth/logout'), {
+      await fetch("http://localhost:3000/auth/logout", {
         method: "POST",
         credentials: "include",
       });

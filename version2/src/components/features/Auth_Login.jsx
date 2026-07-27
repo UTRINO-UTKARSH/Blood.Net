@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { buildApiUrl } from '../../apiConfig';
 const Auth1_Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const { login } = useAuth();
@@ -17,7 +16,7 @@ const Auth1_Login = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      const res = await fetch(buildApiUrl('/auth/login'), {
+      const res = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

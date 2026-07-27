@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { buildApiUrl } from '../../apiConfig';
 
 function ProtectedRoute({ children }) {
   const [authState, setAuthState] = useState({ checked: false, authenticated: false });
   const location = useLocation();
 
   useEffect(() => {
-    fetch(buildApiUrl('/auth/check'), {
+    fetch("http://localhost:3000/auth/check", {
       credentials: "include", // sends the httpOnly cookie automatically
     })
       .then(res => res.json())
