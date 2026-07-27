@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://bloodnet-backend-gbzw.onrender.com/api/:path*"
+    }
+  ]
+}

@@ -25,9 +25,9 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/auth", userRoute);
+app.use("/api/auth", userRoute);
 
-app.get("/ping", (req, res) => {
+app.get("/api/ping", (req, res) => {
   res.send("pong");
 });
 

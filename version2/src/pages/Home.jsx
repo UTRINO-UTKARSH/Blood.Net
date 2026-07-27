@@ -6,7 +6,6 @@ import LightRays from '../components/common/LightRays.jsx'
 import OurFeatures from '../components/features/OurFeatures.jsx'
 import Stats from '../components/Stats.jsx'
 import Cta from '../components/footer/Cta.jsx'
-// import StoryBoard from '../components/Story/StoryBoard.jsx'
 import {STORY} from "../data/act1"
 import {sol} from "../data/act2"
 import Comparison from '../components/comparison/Comparison.jsx'

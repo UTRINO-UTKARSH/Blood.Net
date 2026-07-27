@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { buildApiUrl } from '../../apiConfig';
 const Auth1_SignUp = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
@@ -23,7 +24,7 @@ const Auth1_SignUp = () => {
 
     setLoading(true)
     try {
-      const res = await fetch('http://localhost:3000/auth/signup', {
+      const res = await fetch(buildApiUrl('/auth/signup'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password, category }),
