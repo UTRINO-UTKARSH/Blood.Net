@@ -14,6 +14,7 @@ dist-ssr
 mid-refactors
 Assignment 6
 UI DESIGN
+.env.example
 # UI DESIGN
 # Editor directories and files
 .vscode/*
