@@ -128,4 +128,4 @@ It taught me the fundamentals that everything since has built on: relational dat
 
 ### v2 — Blood.net (Current)
 
-This repository is the modern, full-stack evolution of that original idea — rebuilt from the ground up with React, Node/Express, MySQL, and JWT auth, and scoped far beyond a CLI tool into a real multi-role platform meant to connect donors, patients, hospitals, and blood banks in real time.
+This repository is the modern, full-stack evolution of that original idea — rebuilt from the ground up with React, Node/Express, MySQL, and JWT auth, and scoped far beyond a CLI tool into a real multi-role platform meant to connect donors, patients, hospitals, and blood banks in real time .
