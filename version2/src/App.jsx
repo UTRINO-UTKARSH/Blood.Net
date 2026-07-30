@@ -20,6 +20,36 @@ const AppContent = () => {
   const hideNavbarRoutes = ['/login', '/signup', '/dashboard'];
   const showNavbar = !hideNavbarRoutes.includes(location.pathname.toLowerCase());
 
+  // may come handy later
+
+  // useEffect(() => {
+  //   const handleKeyDown = (e) => {
+  //     // Ctrl + S
+  //     if (e.ctrlKey && e.key === "s") {
+  //       e.preventDefault(); // Prevent browser Save dialog
+  //       console.log("Save triggered!");
+  //     }
+
+  //     // Ctrl + K
+  //     if (e.ctrlKey && e.key === "k") {
+  //       e.preventDefault();
+  //       console.log("Open search");
+  //     }
+
+  //     // Escape
+  //     if (e.key === "Escape") {
+  //       console.log("Close modal");
+  //     }
+  //   };
+
+  //   window.addEventListener("keydown", handleKeyDown);
+
+  //   return () => {
+  //     window.removeEventListener("keydown", handleKeyDown);
+  //   };
+  // }, []);
+
+  
   useEffect(() => {
     const sentinel = sentinelRef.current;
     if (!sentinel) return;
@@ -71,7 +101,7 @@ const AppContent = () => {
           <Route path="/services/doctor" element={
             <ProtectedRoute><Doctor /></ProtectedRoute>
           } />
-          
+
         </Routes>
       </div>
     </div>
