@@ -3,7 +3,6 @@ import { useRef, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/common/Navbar'
 import Home from './pages/Home'
-import DashBoard from './pages/DashBoard'
 import Auth from './pages/Auth';
 import Services from './pages/Services'
 import Ambulance from './components/Services/Ambulance'
@@ -12,42 +11,17 @@ import Hospital from './components/Services/Hospital';
 import Doctor from './components/Services/Doctor'
 import BloodBanks from './components/Services/BloodBanks';
 import BloodDonors from './components/Services/BloodDonors';
+import DashboardRoutes from './Dashboards/Dashboard.Routes';
 const AppContent = () => {
   const sentinelRef = useRef(null);
   const pageContentRef = useRef(null);
   const location = useLocation();
 
-  const hideNavbarRoutes = ['/login', '/signup', '/dashboard'];
-  const showNavbar = !hideNavbarRoutes.includes(location.pathname.toLowerCase());
+  const DashBoard_Routes = ['user','donor','doctor','hospital','blood_bank']
+  const authRoutes = ['/login', '/signup'];
+  const First_urlPart = location.pathname.split('/')[1]?.toLowerCase()
+  const showNavbar = !authRoutes.includes(First_urlPart) && !DashBoard_Routes.includes(First_urlPart)
 
-  // may come handy later
-
-  // useEffect(() => {
-  //   const handleKeyDown = (e) => {
-  //     // Ctrl + S
-  //     if (e.ctrlKey && e.key === "s") {
-  //       e.preventDefault(); // Prevent browser Save dialog
-  //       console.log("Save triggered!");
-  //     }
-
-  //     // Ctrl + K
-  //     if (e.ctrlKey && e.key === "k") {
-  //       e.preventDefault();
-  //       console.log("Open search");
-  //     }
-
-  //     // Escape
-  //     if (e.key === "Escape") {
-  //       console.log("Close modal");
-  //     }
-  //   };
-
-  //   window.addEventListener("keydown", handleKeyDown);
-
-  //   return () => {
-  //     window.removeEventListener("keydown", handleKeyDown);
-  //   };
-  // }, []);
 
   
   useEffect(() => {
@@ -86,7 +60,7 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Auth />} />
-          <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/:category/*" element={<DashboardRoutes />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/ambulance" element={<Ambulance />} />
           <Route path="/services/blooddonors" element={

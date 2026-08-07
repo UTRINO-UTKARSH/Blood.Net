@@ -25,11 +25,13 @@ UI DESIGN
 *.njsproj
 *.sln
 *.sw?
+docs
 
 #Testing files
 Test.jsx
 Problem_midlevel.jsx
-
+.txt
+.docx
 # Environment files
 .env
 .env.*

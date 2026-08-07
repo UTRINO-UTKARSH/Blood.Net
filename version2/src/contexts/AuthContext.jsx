@@ -21,6 +21,7 @@ function AuthProvider({ children }) {
       }
 
       const data = await res.json();
+      console.log(data.name)    
       setUser(data);
       setIsAuthenticated(true);
     } catch {
@@ -51,7 +52,6 @@ function AuthProvider({ children }) {
       setIsAuthenticated(false);
     }
   };
-
   return (
     <AuthContext.Provider
       value={{ isAuthenticated, loading, user, login, logout, fetchUser }}

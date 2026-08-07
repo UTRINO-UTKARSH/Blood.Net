@@ -7,6 +7,10 @@ success on category based login
 Attempt 4:
 fix routes and add lazy loading wherever needed
 
+Task {Create Dashboard for user v1}:-
+    1. For the UI components check refrences of existing Dashboard UI or use "Stich.ai"
+    2. Create Nested Routing pattern for all the creation in the dashboard
+
 task {Deployment💀🥲}:
 Connect backend with frontend()
 --> attempt 1 (failed)
