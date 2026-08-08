@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-
+import Spinner from "./Spinner";
 function ProtectedRoute({ children }) {
   const [authState, setAuthState] = useState({ checked: false, authenticated: false });
   const location = useLocation();
@@ -15,7 +15,7 @@ function ProtectedRoute({ children }) {
   }, []);
 
   if (!authState.checked) {
-    return <div>Loading...</div>; // or a spinner
+    return  <Spinner/>; // or a spinner
   }
 
   if (!authState.authenticated) {

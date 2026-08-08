@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
@@ -20,8 +21,7 @@ function AuthProvider({ children }) {
         return;
       }
 
-      const data = await res.json();
-      console.log(data.name)    
+      const data = await res.json();   
       setUser(data);
       setIsAuthenticated(true);
     } catch {

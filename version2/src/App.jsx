@@ -18,12 +18,11 @@ const AppContent = () => {
   const location = useLocation();
 
   const DashBoard_Routes = ['user','donor','doctor','hospital','blood_bank']
-  const authRoutes = ['/login', '/signup'];
+  const authRoutes = ['login', 'signup'];
   const First_urlPart = location.pathname.split('/')[1]?.toLowerCase()
   const showNavbar = !authRoutes.includes(First_urlPart) && !DashBoard_Routes.includes(First_urlPart)
 
 
-  
   useEffect(() => {
     const sentinel = sentinelRef.current;
     if (!sentinel) return;
