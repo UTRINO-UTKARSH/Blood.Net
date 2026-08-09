@@ -1,1 +1,1 @@
-// alert('for the developer complete compare section')
+alert("Development on hold — currently learning Socket.IO through a ride-tracking project.");

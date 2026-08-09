@@ -9,10 +9,10 @@ const Box = () => {
           <div className="relative overflow-hidden rounded-3xl bg-[#141C2E] border border-white/5 flex flex-col justify-between w-60 h-34 p-3">
             <div className="flex flex-col z-10">
               <span className="text-red-300 text-m font-semibold tracking-wider uppercase">
-                Blood <br /> Group
+                Blood <br /> Group  
               </span>
             </div>
-            
+            {/* https://www.youtube.com/watch?v=zWSvb5t_zH4 socket.io */}
             <div className="flex items-end justify-between z-10">
               <span className="text-4xl font-bold tracking-tight text-[#FF8A8A]">
                 {user?.bloodGroup || 'O+'}
