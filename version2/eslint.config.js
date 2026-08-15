@@ -2,41 +2,61 @@ import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import { defineConfig, globalIgnores } from 'eslint/config'
 
-export default defineConfig([
-  globalIgnores(['dist']),
+export default [
   {
-    // Frontend files
-     files: ['src/**/*.{js,jsx}'],
-    extends: [
-      js.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-    ],
+    ignores: ['dist', 'node_modules', 'build'],
+  },
+
+  // Frontend Configuration (React + shadcn/ui)
+  {
+    files: ['src/**/*.{js,jsx}'],
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.browser,
+      },
       parserOptions: {
-        ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
-        sourceType: 'module',
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      ...js.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+      // Tweaked for shadcn compatibility:
+      'no-unused-vars': [
+        'error',
+        { 
+          varsIgnorePattern: '^[A-Z_]',
+          argsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_'
+        }
+      ],
     },
   },
+
+  // Backend Configuration (Node.js)
   {
-    // Backend files
     files: ['blood_donor_backend/**/*.js'],
     languageOptions: {
       ecmaVersion: 2020,
-      sourceType: 'commonjs', // require/module.exports style
-      globals: globals.node,   // require, process, module, __dirname, etc.
+      sourceType: 'commonjs',
+      globals: {
+        ...globals.node,
+      },
     },
     rules: {
+      ...js.configs.recommended.rules,
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
-])
+]

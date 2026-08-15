@@ -7,7 +7,7 @@ function ProtectedRoute({ children }) {
 
   useEffect(() => {
     fetch("http://localhost:3000/auth/check", {
-      credentials: "include", // sends the httpOnly cookie automatically
+      credentials: "include", // 
     })
       .then(res => res.json())
       .then(data => setAuthState({ checked: true, authenticated: data.authenticated }))

@@ -26,7 +26,7 @@ const DashboardRoutes = () => {
       }
   },[loading,user])
   if (loading) {
-    return <Spinner/>;
+    return <Spinner text={"Loading "}/>;
   }
 
   if (!user) {
@@ -34,7 +34,7 @@ const DashboardRoutes = () => {
       return <Navigate to="/" replace />
     }
     return (<div className='bg-black h-screen text-white text-7xl flex items-center justify-center'>
-      Logging Out
+        <Spinner text={"Loading "}/>
       
       </div>)
   }

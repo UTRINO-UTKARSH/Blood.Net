@@ -21,7 +21,7 @@ function AuthProvider({ children }) {
         return;
       }
 
-      const data = await res.json();   
+      const data = await res.json(); 
       setUser(data);
       setIsAuthenticated(true);
     } catch {
@@ -37,7 +37,6 @@ function AuthProvider({ children }) {
   }, []);
 
   const login = async () => {
-    // After a successful login API call elsewhere, re-fetch the user
     await fetchUser();
   };
 

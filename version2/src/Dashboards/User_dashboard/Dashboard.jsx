@@ -1,7 +1,7 @@
 import { Droplet } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import Box from './components/Box';
-
+import Maps from './components/Maps';
 const Dashboard = () => {
   const { user } = useAuth();
 
@@ -28,6 +28,9 @@ const Dashboard = () => {
           <Box title={'Blood Group'} />
           <Box />
         </div>
+      </div>
+      <div id="map">
+        <Maps />
       </div>
     </div>
   );
