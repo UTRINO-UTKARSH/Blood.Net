@@ -1,4 +1,4 @@
-import { Droplet } from 'lucide-react';
+import {  Navigation   } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import Box from './components/Box';
 import Maps from './components/Maps';
@@ -29,8 +29,19 @@ const Dashboard = () => {
           <Box />
         </div>
       </div>
-      <div id="map">
-        <Maps />
+      <div className='mt-20 flex flex-col max-w-150 backdrop:backdrop-blur-2xl'>
+        <div className='bg-white/20 hover:bg-zinc-900 transition-all duration-300  backdrop-blur-9xl rounded-t-3xl flex justify-around'>
+          <div className='flex p-4  max-w-fit gap-3'>
+            <span><Navigation/></span>
+            <span>Live Location</span>
+          </div>
+          <div className='flex p-4  max-w-fit gap-3'>
+            <span>Active</span>
+          </div>
+        </div>
+        <div className='w-full'>
+          <Maps/>
+        </div>
       </div>
     </div>
   );
