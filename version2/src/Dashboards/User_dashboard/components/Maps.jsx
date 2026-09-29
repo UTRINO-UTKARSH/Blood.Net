@@ -2,6 +2,7 @@ import { Card } from '#components/ui/card.jsx';
 import { Map, MapControls, MapMarker, MarkerContent, MarkerPopup } from '#components/ui/map.jsx';
 import React from 'react';
 import { MapPin } from 'lucide-react';
+import { Live_Location } from '#hooks/Live_Location.js';
 function Maps() {
   const location = {
     lng: 75.7873,
@@ -23,7 +24,7 @@ function Maps() {
           >
             <MarkerContent>
               <div className="" >
-                  <MapPin size={30} fill='green' color='white' />
+                <MapPin size={30} fill='green' color='white' />
               </div>
             </MarkerContent>
 

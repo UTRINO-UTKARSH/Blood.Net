@@ -12,7 +12,29 @@
   --font-greet:"Manrope",sans-serif;
 }
 /* try to add animations like your portfolio */
+::-webkit-scrollbar {
+  width: 8px;
+}
 
+::-webkit-scrollbar-track {
+  background: #bd5420;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1676fc;
+  border-radius: 999px;
+  border: 2px solid #b50cd2;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ce0909;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ef233c #12161f;
+}
 html {
     scroll-behavior: smooth;
     cursor: default;

@@ -16,6 +16,7 @@ Task started (09-08-2026)
     1. Expected ETA 4-6 days or even more
     2. Learning outcome expected {Socket.io learned to the point to intergrate maps and locations, and location broadcasts auth etc..}
     3. Now add functions to the map(one by one first start with hardcoding then go to automate)
+
 task {Deployment💀🥲}:
 Connect backend with frontend()
 --> attempt 1 (failed)
