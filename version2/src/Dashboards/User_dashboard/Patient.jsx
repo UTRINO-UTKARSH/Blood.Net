@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Sidebar from '../../components/common/Sidebar'
 import { Outlet } from 'react-router-dom'
 import { patientNavItems } from '../../data/PatientSidebar'
-import Navbar from './components/Navbar'
+import Navbar from './components/Common/Navbar'
 
 const Patient = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

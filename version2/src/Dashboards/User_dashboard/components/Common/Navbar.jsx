@@ -1,6 +1,6 @@
 import React from 'react'
 import { Search, Asterisk, Bell, User as UserIcon, Menu } from 'lucide-react'
-import { useAuth } from '../../../contexts/AuthContext'
+import { useAuth } from '../../../../contexts/AuthContext'
 
 const Navbar = ({ onMenuClick }) => {
   const { user } = useAuth()
@@ -55,7 +55,6 @@ const Navbar = ({ onMenuClick }) => {
             <p className='text-gray-400 text-xs'>{user?.bloodGroup ? `${user.bloodGroup} Donor` : 'Member'}</p>
           </div>
           
-          {/* Avatar Thumbnail */}
           <div 
             className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-linear-to-tr from-[#FF2D2D]/20 to-[#141C2E] border border-white/10 flex items-center justify-center text-white overflow-hidden shadow-sm shrink-0"
             aria-label="User profile avatar"

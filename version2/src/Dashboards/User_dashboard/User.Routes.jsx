@@ -5,6 +5,7 @@ import Patient from './Patient'
 import DonateBlood from './DonateBlood'
 import Blood_req from './Blood_req'
 import List from './List'
+import Medical_Profile from './Medical_Profile'
 const PatientRoutes = () => {
   return (
         <Routes>
@@ -13,6 +14,7 @@ const PatientRoutes = () => {
               <Route path='request_blood' element={<Blood_req/>} />
               <Route path='blood_donate' element={<DonateBlood/>} />
               <Route path='request_list' element={<List/>} />
+              <Route path='medical_profile' element={<Medical_Profile/>} />
             </Route> 
             
         </Routes>
