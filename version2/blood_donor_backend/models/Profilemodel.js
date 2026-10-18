@@ -4,7 +4,6 @@ const BLOOD_GROUPS = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-", "unknown
 
 const medicalProfileSchema = new mongoose.Schema(
   {
-    // One profile per user. Always set from the JWT, never from the request body.
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -26,7 +25,7 @@ const medicalProfileSchema = new mongoose.Schema(
     weight: { type: Number, min: 1, max: 500, default: null },
     allergies: { type: String, trim: true, maxlength: 500, default: "" },
     chronicConditions: { type: String, trim: true, maxlength: 500, default: "" },
-    profilePic: { type: String, default: "" }, // relative URL, e.g. /uploads/avatars/abc.jpg
+    profilePic: { type: String, default: "" }, 
   },
   { timestamps: true }
 );

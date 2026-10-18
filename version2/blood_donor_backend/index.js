@@ -3,6 +3,7 @@ const http = require("http");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const path = require("path");
 const { Server } = require("socket.io");
 const userRoute = require("./routes/user.route.js");
 const medicalroutes = require("./routes/medical.routes.js")
@@ -12,7 +13,6 @@ const app = express();
 const server = http.createServer(app);
 const PORT = process.env.PORT || 3000;
 
-// Allow localhost for dev, or your production frontend URL from environment variables
 const allowedOrigins = [
   "http://localhost:5173",
   "http://127.0.0.1:5173",
@@ -35,6 +35,7 @@ app.use(
 
 app.use(express.json());
 app.use(cookieParser());
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/auth", userRoute);
 app.use("/api/medical-profile",medicalroutes)

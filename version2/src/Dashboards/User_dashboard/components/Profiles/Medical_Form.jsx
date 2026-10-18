@@ -3,11 +3,10 @@ import { Camera, UserRound, MapPin, Droplet, HeartPulse } from "lucide-react";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-const Medical_Form = () => {
+const Medical_Form = ({ onSaved }) => {
     const fileInputRef = useRef(null);
-
-    const [profilePic, setProfilePic] = useState(null); 
-    const [profileFile, setProfileFile] = useState(null); 
+    const [profilePic, setProfilePic] = useState(null);
+    const [profileFile, setProfileFile] = useState(null);
     const [saving, setSaving] = useState(false);
     const [status, setStatus] = useState(null);
 
@@ -102,7 +101,7 @@ const Medical_Form = () => {
             if (!res.ok) throw new Error(data.message || "Could not save your profile.");
 
             setProfileFile(null);
-            setStatus({ type: "success", text: "Medical profile saved." });
+            onSaved?.(); // tells Medical_Profile to switch to the preview
         } catch (err) {
             setStatus({ type: "error", text: err.message });
         } finally {
@@ -118,323 +117,324 @@ const Medical_Form = () => {
     const labelClass = "mb-2 block text-sm font-medium text-slate-300";
 
     return (
-        <div className="min-h-screen bg-[#080f1e] px-4 py-8 text-white sm:px-8">
-            <div className="mx-auto max-w-4xl">
-                <div className="mb-8">
-                    <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-red-400">
-                        Blood.net / Account Setup
-                    </p>
+        <>
+            <div className="min-h-screen bg-[#080f1e] px-4 py-8 text-white sm:px-8">
+                <div className="mx-auto max-w-4xl">
+                    <div className="mb-8">
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-red-400">
+                            Blood.net / Account Setup
+                        </p>
 
-                    <h1 className="text-3xl font-bold sm:text-4xl">
-                        Create your medical profile
-                    </h1>
+                        <h1 className="text-3xl font-bold sm:text-4xl">
+                            Create your medical profile
+                        </h1>
 
-                    <p className="mt-3 text-sm text-slate-400">
-                        Add your details to help make blood donation and emergency
-                        assistance easier.
-                    </p>
-                </div>
-
-                <form
-                    onSubmit={handleSubmit}
-                    className="space-y-6 rounded-2xl border border-slate-800 bg-[#101a2c] p-5 sm:p-8"
-                >
-                    <div className="flex flex-col items-center gap-4 border-b border-slate-800 pb-7 sm:flex-row">
-                        <div className="relative">
-                            <div className="flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border-2 border-red-500 bg-slate-800">
-                                {profilePic ? (
-                                    <img
-                                        src={profilePic}
-                                        alt="Profile preview"
-                                        className="h-full w-full object-cover"
-                                    />
-                                ) : (
-                                    <UserRound size={42} className="text-slate-500" />
-                                )}
-                            </div>
-
-                            <button
-                                type="button"
-                                onClick={() => fileInputRef.current?.click()}
-                                className="absolute bottom-0 right-0 rounded-full bg-red-600 p-2 transition hover:bg-red-500"
-                                aria-label="Upload profile picture"
-                            >
-                                <Camera size={18} />
-                            </button>
-
-                            <input
-                                ref={fileInputRef}
-                                type="file"
-                                accept="image/*"
-                                onChange={handleImageChange}
-                                className="hidden"
-                            />
-                        </div>
-
-                        <div className="text-center sm:text-left">
-                            <h2 className="text-lg font-semibold">Profile picture</h2>
-                            <p className="mt-1 text-sm text-slate-400">
-                                Upload a clear picture of yourself.
-                            </p>
-                            <p className="mt-1 text-xs text-slate-500">
-                                JPG, PNG or WebP · Maximum 5 MB
-                            </p>
-                        </div>
+                        <p className="mt-3 text-sm text-slate-400">
+                            Add your details to help make blood donation and emergency
+                            assistance easier.
+                        </p>
                     </div>
 
-                    {/* Personal details */}
-                    <section>
-                        <h2 className="mb-5 flex items-center gap-2 text-lg font-semibold">
-                            <UserRound className="text-red-400" size={20} />
-                            Personal information
-                        </h2>
+                    <form
+                        onSubmit={handleSubmit}
+                        className="space-y-6 rounded-2xl border border-slate-800 bg-[#101a2c] p-5 sm:p-8"
+                    >
+                        <div className="flex flex-col items-center gap-4 border-b border-slate-800 pb-7 sm:flex-row">
+                            <div className="relative">
+                                <div className="flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border-2 border-red-500 bg-slate-800">
+                                    {profilePic ? (
+                                        <img
+                                            src={profilePic}
+                                            alt="Profile preview"
+                                            className="h-full w-full object-cover"
+                                        />
+                                    ) : (
+                                        <UserRound size={42} className="text-slate-500" />
+                                    )}
+                                </div>
 
-                        <div className="grid gap-5 sm:grid-cols-2">
-                            <div className="sm:col-span-2">
-                                <label className={labelClass}>Full name *</label>
-                                <input
-                                    name="fullName"
-                                    value={formData.fullName}
-                                    onChange={handleChange}
-                                    placeholder="Enter your full name"
-                                    className={inputClass}
-                                    autoComplete="name"
-                                    required
-                                    maxLength={100}
-                                />
-                            </div>
-
-                            <div>
-                                <label className={labelClass}>Date of birth *</label>
-                                <input
-                                    type="date"
-                                    name="dob"
-                                    value={formData.dob}
-                                    onChange={handleChange}
-                                    className={inputClass}
-                                    autoComplete="bday"
-                                    required
-                                />
-                            </div>
-
-                            <div>
-                                <label className={labelClass}>Gender</label>
-                                <select
-                                    name="gender"
-                                    value={formData.gender}
-                                    onChange={handleChange}
-                                    className={inputClass}
+                                <button
+                                    type="button"
+                                    onClick={() => fileInputRef.current?.click()}
+                                    className="absolute bottom-0 right-0 rounded-full bg-red-600 p-2 transition hover:bg-red-500"
+                                    aria-label="Upload profile picture"
                                 >
-                                    <option value="">Select gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="other">Other</option>
-                                    <option value="prefer-not-to-say">
-                                        Prefer not to say
-                                    </option>
-                                </select>
-                            </div>
+                                    <Camera size={18} />
+                                </button>
 
-                            <div>
-                                <label className={labelClass}>Phone number *</label>
                                 <input
-                                    type="tel"
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    placeholder="Enter phone number"
-                                    className={inputClass}
-                                    autoComplete="tel"
-                                    maxLength={15}
-                                    required
+                                    ref={fileInputRef}
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleImageChange}
+                                    className="hidden"
                                 />
                             </div>
 
-                            <div>
-                                <label className={labelClass}>Location *</label>
-                                <div className="relative">
-                                    <MapPin
-                                        size={18}
-                                        className="absolute left-3 top-3.5 text-slate-500"
-                                    />
+                            <div className="text-center sm:text-left">
+                                <h2 className="text-lg font-semibold">Profile picture</h2>
+                                <p className="mt-1 text-sm text-slate-400">
+                                    Upload a clear picture of yourself.
+                                </p>
+                                <p className="mt-1 text-xs text-slate-500">
+                                    JPG, PNG or WebP · Maximum 5 MB
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Personal details */}
+                        <section>
+                            <h2 className="mb-5 flex items-center gap-2 text-lg font-semibold">
+                                <UserRound className="text-red-400" size={20} />
+                                Personal information
+                            </h2>
+
+                            <div className="grid gap-5 sm:grid-cols-2">
+                                <div className="sm:col-span-2">
+                                    <label className={labelClass}>Full name *</label>
                                     <input
-                                        name="location"
-                                        value={formData.location}
+                                        name="fullName"
+                                        value={formData.fullName}
                                         onChange={handleChange}
-                                        placeholder="City, state"
-                                        className={`${inputClass} pl-10`}
-                                        autoComplete="address-level2"
+                                        placeholder="Enter your full name"
+                                        className={inputClass}
+                                        autoComplete="name"
+                                        required
+                                        maxLength={100}
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className={labelClass}>Date of birth *</label>
+                                    <input
+                                        type="date"
+                                        name="dob"
+                                        value={formData.dob}
+                                        onChange={handleChange}
+                                        className={inputClass}
+                                        autoComplete="bday"
                                         required
                                     />
                                 </div>
-                            </div>
-                        </div>
-                    </section>
 
-                    <section className="border-t border-slate-800 pt-6">
-                        <h2 className="mb-5 flex items-center gap-2 text-lg font-semibold">
-                            <HeartPulse className="text-red-400" size={20} />
-                            Medical information
-                        </h2>
-
-                        <div className="grid gap-5 sm:grid-cols-2">
-                            <div className="sm:col-span-2">
-                                <label className={labelClass}>
-                                    Blood group *
-                                </label>
-
-                                <div className="relative">
-                                    <Droplet
-                                        size={18}
-                                        className="absolute left-3 top-3.5 text-red-400"
-                                    />
-
+                                <div>
+                                    <label className={labelClass}>Gender</label>
                                     <select
-                                        name="bloodGroup"
-                                        value={formData.bloodGroup}
+                                        name="gender"
+                                        value={formData.gender}
                                         onChange={handleChange}
-                                        className={`${inputClass} pl-10`}
-                                        required
+                                        className={inputClass}
                                     >
-                                        <option value="">Select blood group</option>
-                                        {[
-                                            "A+",
-                                            "A-",
-                                            "B+",
-                                            "B-",
-                                            "AB+",
-                                            "AB-",
-                                            "O+",
-                                            "O-",
-                                        ].map((group) => (
-                                            <option key={group} value={group}>
-                                                {group}
-                                            </option>
-                                        ))}
-                                        <option value="unknown">I don't know</option>
+                                        <option value="">Select gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                        <option value="prefer-not-to-say">
+                                            Prefer not to say
+                                        </option>
                                     </select>
                                 </div>
 
-                                <p className="mt-2 text-xs text-slate-500">
-                                    If unknown, select "I don't know". Confirm blood type
-                                    through appropriate testing before transfusion.
-                                </p>
-                            </div>
+                                <div>
+                                    <label className={labelClass}>Phone number *</label>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        placeholder="Enter phone number"
+                                        className={inputClass}
+                                        autoComplete="tel"
+                                        maxLength={15}
+                                        required
+                                    />
+                                </div>
 
-                            <div>
-                                <label className={labelClass}>Height (cm)</label>
-                                <input
-                                    type="number"
-                                    name="height"
-                                    value={formData.height}
-                                    onChange={handleChange}
-                                    placeholder="e.g. 175"
-                                    className={inputClass}
-                                    min="1"
-                                    max="300"
-                                />
+                                <div>
+                                    <label className={labelClass}>Location *</label>
+                                    <div className="relative">
+                                        <MapPin
+                                            size={18}
+                                            className="absolute left-3 top-3.5 text-slate-500"
+                                        />
+                                        <input
+                                            name="location"
+                                            value={formData.location}
+                                            onChange={handleChange}
+                                            placeholder="City, state"
+                                            className={`${inputClass} pl-10`}
+                                            autoComplete="address-level2"
+                                            required
+                                        />
+                                    </div>
+                                </div>
                             </div>
+                        </section>
 
-                            <div>
-                                <label className={labelClass}>Weight (kg)</label>
-                                <input
-                                    type="number"
-                                    name="weight"
-                                    value={formData.weight}
-                                    onChange={handleChange}
-                                    placeholder="e.g. 70"
-                                    className={inputClass}
-                                    min="1"
-                                    max="500"
-                                />
+                        <section className="border-t border-slate-800 pt-6">
+                            <h2 className="mb-5 flex items-center gap-2 text-lg font-semibold">
+                                <HeartPulse className="text-red-400" size={20} />
+                                Medical information
+                            </h2>
+
+                            <div className="grid gap-5 sm:grid-cols-2">
+                                <div className="sm:col-span-2">
+                                    <label className={labelClass}>
+                                        Blood group *
+                                    </label>
+
+                                    <div className="relative">
+                                        <Droplet
+                                            size={18}
+                                            className="absolute left-3 top-3.5 text-red-400"
+                                        />
+
+                                        <select
+                                            name="bloodGroup"
+                                            value={formData.bloodGroup}
+                                            onChange={handleChange}
+                                            className={`${inputClass} pl-10`}
+                                            required
+                                        >
+                                            <option value="">Select blood group</option>
+                                            {[
+                                                "A+",
+                                                "A-",
+                                                "B+",
+                                                "B-",
+                                                "AB+",
+                                                "AB-",
+                                                "O+",
+                                                "O-",
+                                            ].map((group) => (
+                                                <option key={group} value={group}>
+                                                    {group}
+                                                </option>
+                                            ))}
+                                            <option value="unknown">I don't know</option>
+                                        </select>
+                                    </div>
+
+                                    <p className="mt-2 text-xs text-slate-500">
+                                        If unknown, select "I don't know". Confirm blood type
+                                        through appropriate testing before transfusion.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <label className={labelClass}>Height (cm)</label>
+                                    <input
+                                        type="number"
+                                        name="height"
+                                        value={formData.height}
+                                        onChange={handleChange}
+                                        placeholder="e.g. 175"
+                                        className={inputClass}
+                                        min="1"
+                                        max="300"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className={labelClass}>Weight (kg)</label>
+                                    <input
+                                        type="number"
+                                        name="weight"
+                                        value={formData.weight}
+                                        onChange={handleChange}
+                                        placeholder="e.g. 70"
+                                        className={inputClass}
+                                        min="1"
+                                        max="500"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className={labelClass}>Known allergies</label>
+                                    <input
+                                        name="allergies"
+                                        value={formData.allergies}
+                                        onChange={handleChange}
+                                        placeholder="e.g. Penicillin, or None known"
+                                        className={inputClass}
+                                        maxLength={500}
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className={labelClass}>
+                                        Chronic conditions
+                                    </label>
+                                    <input
+                                        name="chronicConditions"
+                                        value={formData.chronicConditions}
+                                        onChange={handleChange}
+                                        placeholder="Optional"
+                                        className={inputClass}
+                                        maxLength={500}
+                                    />
+                                </div>
                             </div>
+                        </section>
 
-                            <div>
-                                <label className={labelClass}>Known allergies</label>
-                                <input
-                                    name="allergies"
-                                    value={formData.allergies}
-                                    onChange={handleChange}
-                                    placeholder="e.g. Penicillin, or None known"
-                                    className={inputClass}
-                                    maxLength={500}
-                                />
-                            </div>
-
-                            <div>
-                                <label className={labelClass}>
-                                    Chronic conditions
-                                </label>
-                                <input
-                                    name="chronicConditions"
-                                    value={formData.chronicConditions}
-                                    onChange={handleChange}
-                                    placeholder="Optional"
-                                    className={inputClass}
-                                    maxLength={500}
-                                />
-                            </div>
-                        </div>
-                    </section>
-
-                    {status && (
-                        <p
-                            role="status"
-                            className={`rounded-lg px-4 py-3 text-sm ${
-                                status.type === "success"
+                        {status && (
+                            <p
+                                role="status"
+                                className={`rounded-lg px-4 py-3 text-sm ${status.type === "success"
                                     ? "bg-emerald-500/10 text-emerald-300"
                                     : "bg-red-500/10 text-red-300"
-                            }`}
-                        >
-                            {status.text}
-                        </p>
-                    )}
+                                    }`}
+                            >
+                                {status.text}
+                            </p>
+                        )}
 
-                    {/* Submit */}
-                    <div className="flex flex-col-reverse gap-3 border-t border-slate-800 pt-6 sm:flex-row sm:justify-end">
-                        <button
-                            type="button"
-                            onClick={() => {
-                                setFormData({
-                                    fullName: "",
-                                    dob: "",
-                                    gender: "",
-                                    bloodGroup: "",
-                                    phone: "",
-                                    location: "",
-                                    height: "",
-                                    weight: "",
-                                    allergies: "",
-                                    chronicConditions: "",
-                                });
-                                setProfilePic(null);
-                                setProfileFile(null);
-                                setStatus(null);
-                                if (fileInputRef.current) {
-                                    fileInputRef.current.value = "";
-                                }
-                            }}
-                            className="rounded-lg border border-slate-700 px-6 py-3 text-sm font-medium text-slate-300 transition hover:bg-slate-800"
-                        >
-                            Reset form
-                        </button>
+                        {/* Submit */}
+                        <div className="flex flex-col-reverse gap-3 border-t border-slate-800 pt-6 sm:flex-row sm:justify-end">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setFormData({
+                                        fullName: "",
+                                        dob: "",
+                                        gender: "",
+                                        bloodGroup: "",
+                                        phone: "",
+                                        location: "",
+                                        height: "",
+                                        weight: "",
+                                        allergies: "",
+                                        chronicConditions: "",
+                                    });
+                                    setProfilePic(null);
+                                    setProfileFile(null);
+                                    setStatus(null);
+                                    if (fileInputRef.current) {
+                                        fileInputRef.current.value = "";
+                                    }
+                                }}
+                                className="rounded-lg border border-slate-700 px-6 py-3 text-sm font-medium text-slate-300 transition hover:bg-slate-800"
+                            >
+                                Reset form
+                            </button>
 
-                        <button
-                            type="submit"
-                            disabled={saving}
-                            className="rounded-lg bg-red-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-red-500 disabled:cursor-not-allowed disabled:opacity-60"
-                        >
-                            {saving ? "Saving..." : "Save medical profile"}
-                        </button>
-                    </div>
-                </form>
+                            <button
+                                type="submit"
+                                disabled={saving}
+                                className="rounded-lg bg-red-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-red-500 disabled:cursor-not-allowed disabled:opacity-60"
+                            >
+                                {saving ? "Saving..." : "Save medical profile"}
+                            </button>
+                        </div>
+                    </form>
 
-                <p className="mt-5 text-center text-xs text-slate-500">
-                    Your medical information should only be accessible to authorized
-                    users with appropriate permission.
-                </p>
+                    <p className="mt-5 text-center text-xs text-slate-500">
+                        Your medical information should only be accessible to authorized
+                        users with appropriate permission.
+                    </p>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 

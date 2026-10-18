@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Activity, Ambulance, Droplet, HandHeart, Navigation, Stethoscope } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import Box from './components/Common/Box';
@@ -7,6 +8,27 @@ import AlertsFeed from './components/Dashboard/AlertsFeed';
 
 const Dashboard = () => {
   const { user } = useAuth();
+  const [bloodGroup, setBloodGroup] = useState('—');
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
+    fetch(`${apiUrl}/api/medical-profile/me`, {
+      credentials: 'include',
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error('Could not load medical profile');
+        return response.json();
+      })
+      .then(({ profile }) => setBloodGroup(profile?.bloodGroup || '—'))
+      .catch((error) => {
+        if (error.name !== 'AbortError') setBloodGroup('—');
+      });
+
+    return () => controller.abort();
+  }, []);
 
   const getGreeting = () => {
     const hour = new Date().getHours();
@@ -35,7 +57,7 @@ const Dashboard = () => {
                 Blood <br /> Group
               </>
             }
-            value={user?.bloodGroup || 'O+'}
+            value={bloodGroup}
             icon={Droplet}
           />
           <Box
