@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Medical_Form from "./components/Profiles/Medical_Form";
 import Medical_Preview from "./components/Profiles/Medical_Preview";
+import Spinner from "#components/common/Spinner.jsx";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
@@ -25,7 +26,7 @@ const Medical_Profile = () => {
     if (view === null) {
         return (
             <div className="flex min-h-screen items-center justify-center bg-[#080f1e] text-slate-400">
-                Loading...
+                <span className="text-4xl"></span><Spinner/>
             </div>
         );
     }
