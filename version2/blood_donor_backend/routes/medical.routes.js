@@ -6,7 +6,7 @@ const fs = require("fs");
 
 const MedicalProfile = require("../models/Profilemodel");
 const { BLOOD_GROUPS } = MedicalProfile;
-const { protect } = require("../middleware/auth"); // <-- your JWT cookie middleware
+const { protect } = require("../middleware/Auth"); // <-- your JWT cookie middleware
 
 const router = express.Router();
 
