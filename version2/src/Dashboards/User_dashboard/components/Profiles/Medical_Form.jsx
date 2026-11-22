@@ -101,7 +101,7 @@ const Medical_Form = ({ onSaved }) => {
             if (!res.ok) throw new Error(data.message || "Could not save your profile.");
 
             setProfileFile(null);
-            onSaved?.(); // tells Medical_Profile to switch to the preview
+            await onSaved?.(); // tells Medical_Profile to switch to the preview
         } catch (err) {
             setStatus({ type: "error", text: err.message });
         } finally {

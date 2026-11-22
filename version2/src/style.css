@@ -27,13 +27,13 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ce0909;
+  background: #ec4646;
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #ef233c #12161f;
+  scrollbar-color: #ff0808 #12161f;
 }
 html {
     scroll-behavior: smooth;

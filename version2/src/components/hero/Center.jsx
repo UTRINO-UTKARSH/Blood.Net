@@ -2,7 +2,7 @@ import React from 'react'
 
 const Center = () => {
     return (
-        <div className='vanishing-image flex flex-col  items-center mt-16 md:mt-24'>
+        <div className='vanishing-image flex flex-col  items-center mt-13 md:mt-14'>
 
             {/* Main Hero */}
             <div className='flex flex-col items-center text-center'>

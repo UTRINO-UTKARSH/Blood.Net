@@ -1,10 +1,16 @@
 import React from 'react'
 import { Search, Asterisk, Bell, User as UserIcon, Menu } from 'lucide-react'
 import { useAuth } from '../../../../contexts/AuthContext'
-
+import { useMedicalProfile } from '#contexts/MedicalProfileContext.jsx'
 const Navbar = ({ onMenuClick }) => {
   const { user } = useAuth()
+  const { profile } = useMedicalProfile()
 
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000"
+
+  const avatarUrl = profile?.profilePic
+    ? `${API_URL}${profile.profilePic}`
+    : user?.avatar
   return (
     <header className='flex items-center justify-between gap-2 sm:gap-4 md:gap-6 w-full py-1'>
       <button
@@ -29,8 +35,8 @@ const Navbar = ({ onMenuClick }) => {
         />
       </div>
       <div className='flex items-center gap-2 sm:gap-4 shrink-0'>
-        
-        <button 
+
+        <button
           type='button'
           className='flex items-center gap-1.5 sm:gap-2 bg-[#FF2D2D] hover:bg-[#e02323] active:scale-95 text-white text-xs sm:text-sm font-semibold px-3 sm:px-5 py-2.5 sm:py-3 rounded-2xl shadow-[0_0_20px_rgba(255,45,45,0.35)] transition-all'
         >
@@ -39,7 +45,7 @@ const Navbar = ({ onMenuClick }) => {
           <span className='inline sm:hidden'>SOS</span>
         </button>
 
-        <button 
+        <button
           type='button'
           aria-label='View notifications'
           className='relative p-2.5 rounded-xl bg-[#141C2E] border border-white/10 text-gray-300 hover:text-white hover:bg-white/5 transition-all shrink-0'
@@ -54,13 +60,20 @@ const Navbar = ({ onMenuClick }) => {
             <p className='text-white text-sm font-semibold'>{user?.name ?? 'Guest'}</p>
             <p className='text-gray-400 text-xs'>{user?.bloodGroup ? `${user.bloodGroup} Donor` : 'Member'}</p>
           </div>
-          
-          <div 
+
+          <div
             className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-linear-to-tr from-[#FF2D2D]/20 to-[#141C2E] border border-white/10 flex items-center justify-center text-white overflow-hidden shadow-sm shrink-0"
             aria-label="User profile avatar"
           >
-            {user?.avatar ? (
-              <img src={user.avatar} alt={user?.name || 'User profile'} className="w-full h-full object-cover" />
+            {avatarUrl ? (
+              <img
+                src={avatarUrl}
+                alt={user?.name || 'User profile'}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none"
+                }}
+              />
             ) : (
               <UserIcon size={18} className="text-gray-300" />
             )}

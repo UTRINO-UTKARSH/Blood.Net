@@ -20,19 +20,17 @@ const Home = () => {
           raysOrigin="top-center"
           raysColor="#ffffff"
           raysSpeed={1}
-          lightSpread={0.5}
-          rayLength={3}
+          lightSpread={0.3}
+          rayLength={2.2}
           followMouse={true}
-          mouseInfluence={0.1}
+          mouseInfluence={0.3}
           noiseAmount={0}
           distortion={0}
           pulsating={false}
-          fadeDistance={1}
-          saturation={1}
-          className=" fixed z-0 inset-0 pointer-events-none"
+          fadeDistance={0.76}
+          saturation={0.75}
+          className="fixed z-0 inset-0 pointer-events-none opacity-45"
         />
-
-        {/* Content Layer */}
         <div className="relative z-10 h-full flex flex-col pt-4 sm:pt-6 md:pt-8 lg:pt-10 px-4 sm:px-0">
          
 

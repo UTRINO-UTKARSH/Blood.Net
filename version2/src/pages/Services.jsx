@@ -238,18 +238,18 @@ export default function ServicesLandingPage() {
     <div className=" min-h-screen">
       <LightRays
         raysOrigin="top-center"
-        raysColor="#ffffff"
+        raysColor="#9da9ba"
         raysSpeed={1}
-        lightSpread={0.5}
-        rayLength={3}
+        lightSpread={0.35}
+        rayLength={2.2}
         followMouse={true}
         mouseInfluence={0.1}
         noiseAmount={0}
         distortion={0}
         pulsating={false}
-        fadeDistance={1}
-        saturation={1}
-        className=" fixed z-0 inset-0 pointer-events-none"
+        fadeDistance={1.15}
+        saturation={0.75}
+        className="fixed z-0 inset-0 pointer-events-none opacity-45"
       />
       <div className=" bg-neutral-950 pb-24 font-sans text-white">
         <Hero />
