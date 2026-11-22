@@ -1,3 +1,4 @@
+
 {
   "rewrites": [
     {
@@ -11,6 +12,10 @@
     {
       "source": "/uploads/:path*",
       "destination": "https://bloodnet-backend-gbzw.onrender.com/uploads/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
