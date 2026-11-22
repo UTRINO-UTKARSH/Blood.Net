@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState, useEffect } from 'react';
+import { API_URL } from '../lib/api';
 
 const AuthContext = createContext();
 
@@ -10,7 +11,7 @@ function AuthProvider({ children }) {
 
   const fetchUser = async () => {
     try {
-      const res = await fetch("http://localhost:3000/auth/me", {
+      const res = await fetch(`${API_URL}/auth/me`, {
         method: "GET",
         credentials: "include",
       });
@@ -42,7 +43,7 @@ function AuthProvider({ children }) {
 
   const logout = async () => {
     try {
-      await fetch("http://localhost:3000/auth/logout", {
+      await fetch(`${API_URL}/auth/logout`, {
         method: "POST",
         credentials: "include",
       });

@@ -2,11 +2,11 @@ import React from 'react'
 import { Search, Asterisk, Bell, User as UserIcon, Menu } from 'lucide-react'
 import { useAuth } from '../../../../contexts/AuthContext'
 import { useMedicalProfile } from '#contexts/MedicalProfileContext.jsx'
+import { API_URL } from '#lib/api.js'
+
 const Navbar = ({ onMenuClick }) => {
   const { user } = useAuth()
   const { profile } = useMedicalProfile()
-
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000"
 
   const avatarUrl = profile?.profilePic
     ? `${API_URL}${profile.profilePic}`

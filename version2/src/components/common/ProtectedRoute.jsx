@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import Spinner from "./Spinner";
+import { API_URL } from "../../lib/api";
+
 function ProtectedRoute({ children }) {
   const [authState, setAuthState] = useState({ checked: false, authenticated: false });
   const location = useLocation();
 
   useEffect(() => {
-    fetch("http://localhost:3000/auth/check", {
+    fetch(`${API_URL}/auth/check`, {
       credentials: "include", // 
     })
       .then(res => res.json())

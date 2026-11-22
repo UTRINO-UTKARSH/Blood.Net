@@ -1,8 +1,16 @@
 {
   "rewrites": [
     {
+      "source": "/auth/:path*",
+      "destination": "https://bloodnet-backend-gbzw.onrender.com/auth/:path*"
+    },
+    {
       "source": "/api/:path*",
       "destination": "https://bloodnet-backend-gbzw.onrender.com/api/:path*"
+    },
+    {
+      "source": "/uploads/:path*",
+      "destination": "https://bloodnet-backend-gbzw.onrender.com/uploads/:path*"
     }
   ]
 }

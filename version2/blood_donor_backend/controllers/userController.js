@@ -10,8 +10,8 @@ exports.logout = (req, res) => {
   try {
     res.clearCookie("jwt", {
       httpOnly: true,
-      sameSite: "lax",
-      secure: true,
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      secure: process.env.NODE_ENV === "production",
     });
     return res.status(200).json({ message: "Logged out successfully!" });
   } catch (error) {

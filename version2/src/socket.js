@@ -1,4 +1,7 @@
-
 import { io } from 'socket.io-client';
 
-export const socket = io("http://localhost:3000")
+const socketUrl = import.meta.env.DEV
+  ? 'http://localhost:3000'
+  : (import.meta.env.VITE_SOCKET_URL || 'https://bloodnet-backend-gbzw.onrender.com');
+
+export const socket = io(socketUrl, { withCredentials: true });

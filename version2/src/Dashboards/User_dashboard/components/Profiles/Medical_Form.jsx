@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Camera, UserRound, MapPin, Droplet, HeartPulse } from "lucide-react";
-
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+import { API_URL } from "../../../../lib/api";
 
 const Medical_Form = ({ onSaved }) => {
     const fileInputRef = useRef(null);

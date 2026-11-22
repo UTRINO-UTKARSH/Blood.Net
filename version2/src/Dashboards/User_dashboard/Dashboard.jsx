@@ -5,6 +5,7 @@ import Box from './components/Common/Box';
 import Maps from './components/Common/Maps';
 import ActionBox from './components/Dashboard/Action';
 import AlertsFeed from './components/Dashboard/AlertsFeed';
+import { API_URL } from '../../lib/api';
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -12,9 +13,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
-    fetch(`${apiUrl}/api/medical-profile/me`, {
+    fetch(`${API_URL}/api/medical-profile/me`, {
       credentials: 'include',
       signal: controller.signal,
     })
