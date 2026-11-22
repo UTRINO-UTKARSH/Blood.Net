@@ -3,10 +3,7 @@ import React from 'react'
 const Center = () => {
     return (
         <div className='vanishing-image flex flex-col  items-center mt-13 md:mt-14'>
-
-            {/* Main Hero */}
             <div className='flex flex-col items-center text-center'>
-
                 <h1 className='text-white head1 font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-tight'>
                     One Network For
                 </h1>
